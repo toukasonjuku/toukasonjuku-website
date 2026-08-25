@@ -28,8 +28,9 @@
 - [x] `build.js`（partials結合＋静的アセットコピーの最小ロジック）を作成（2026-08-26・npm依存ゼロ）
 - [x] `package.json` 作成（devDependenciesゼロ、`scripts.build`のみ）（2026-08-26）
 - [x] トップページ1枚を `src/pages/index.html` に移し、`node build.js` でローカル動作確認（2026-08-26・元の`index.html`と空白差異を除き完全一致することを自動diffで確認済み。ルート直下の本番用`index.html`/`style.css`/`script.js`は未変更で本番デプロイに影響なし）
-- [ ] `docs/content-authoring.md`（ページ追加・編集ルール）を新設
-- [ ] `AGENTS.md` を新設し `CLAUDE.md` から参照
+- [x] `docs/content-authoring.md`（ページ追加・編集ルール）を新設（2026-08-26）
+- [x] `AGENTS.md` を新設し `CLAUDE.md` から参照（2026-08-26・AIの自律範囲/承認ルール/git運用ルール/タスク管理方針を集約）
+- [x] `main`へのpushを技術的にブロックするhookを設定（2026-08-26・`.claude/settings.json`）
 
 **コンテンツ実装**
 - [ ] お知らせページの新設（随時更新できる構造）

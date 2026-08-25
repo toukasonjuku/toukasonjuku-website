@@ -14,6 +14,14 @@
 
 ---
 
+### 2026-08-26 AGENTS.md新設・content-authoring.md整備・main push技術ブロックhook追加（関連タスク: docs/tasks.md「基盤づくり」）
+- 内容: 実装をほぼAIに任せ人間は方針決定・承認に集中する体制のため、(1) `AGENTS.md`新設（役割分担・自律範囲/承認必須操作・ページ追加ワークフロー・git運用ルール・タスク管理方針を集約、CLAUDE.mdから`@AGENTS.md`で読込）、(2) `CLAUDE.md`の重複ガバナンス記述をAGENTS.mdへ集約しファイル構成表を更新、(3) `docs/content-authoring.md`新設（ページ執筆手順・metaブロック書式・「事実不明点は`[要確認]`と明記」ルール・1ページごとレビューの運用）、(4) `.claude/hooks/block-main-push.sh`+`.claude/settings.json`のPreToolUse(Bash)フックで、mainブランチへの`git push`を技術的にもブロック（main以外のpushやpull/fetch/commit等は対象外）
+- コミット: 本コミット
+- 確認: フックスクリプトを単体でパイプテストし、`git push origin main`/`git push -u origin main`/`git push origin HEAD:main`/(mainブランチにcheckoutした状態での)`git push`・`git push origin`はブロック、`git push origin feature/multipage-restructure`・`git push origin main-backup`・`git pull`・`git commit`・(featureブランチでの)`git push`はブロックされないことを確認。`jq -e`でsettings.jsonの構文・スキーマ形状を検証済み。ただしこのセッション開始時に`.claude/`が存在しなかったため設定ウォッチャーが未検知で、実際にBashツール経由でフックが発火するかは本セッション内で確認できず（センチネルログで確認試行し不発火を確認）。ユーザーに`/hooks`実行またはセッション再起動を依頼済み
+- 次にやること: ユーザーがセッション再起動/`/hooks`実行後、実際に`git push`でフックが発火するか再確認する。その後、残り5ページの実装に着手
+
+---
+
 ### 2026-08-26 git運用ルールを確定し、本番反映時の注意点をtasks.mdに追記（関連タスク: docs/tasks.md「本番反映」）
 - 内容: AIによる編集は作業単位ごとにローカルコミットまで自動化することをCLAUDE.mdに明記（push・mainへのマージはユーザー確認必須のまま）。あわせて、Renderのビルド設定（`dist`配信）へ切り替える前に`main`へマージするとdocs/等が一般公開されてしまうリスクをCLAUDE.mdとdocs/tasks.mdの両方に明記
 - コミット: 本コミット
