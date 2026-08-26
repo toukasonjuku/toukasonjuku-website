@@ -14,6 +14,14 @@
 
 ---
 
+### 2026-08-26 AGENTS.mdの誤った人名記載を修正（関連タスク: なし・品質修正）
+- 内容: AGENTS.mdに「人間（河合）」という実在しない名前を根拠なく記載していたのをユーザーに指摘され修正。「人間（プロジェクトオーナー）」のように役割名のみに変更し、特定の人名を推測・記載しないようにした
+- コミット: 本コミット
+- 確認: `grep -rn "河合"` でリポジトリ全体に該当箇所が残っていないことを確認
+- 次にやること: 残り5ページの実装に着手
+
+---
+
 ### 2026-08-26 AGENTS.md新設・content-authoring.md整備・main push技術ブロックhook追加（関連タスク: docs/tasks.md「基盤づくり」）
 - 内容: 実装をほぼAIに任せ人間は方針決定・承認に集中する体制のため、(1) `AGENTS.md`新設（役割分担・自律範囲/承認必須操作・ページ追加ワークフロー・git運用ルール・タスク管理方針を集約、CLAUDE.mdから`@AGENTS.md`で読込）、(2) `CLAUDE.md`の重複ガバナンス記述をAGENTS.mdへ集約しファイル構成表を更新、(3) `docs/content-authoring.md`新設（ページ執筆手順・metaブロック書式・「事実不明点は`[要確認]`と明記」ルール・1ページごとレビューの運用）、(4) `.claude/hooks/block-main-push.sh`+`.claude/settings.json`のPreToolUse(Bash)フックで、mainブランチへの`git push`を技術的にもブロック（main以外のpushやpull/fetch/commit等は対象外）
 - コミット: 本コミット
