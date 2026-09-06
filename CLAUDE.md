@@ -1,7 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 @AGENTS.md
 
 ## プロジェクト概要
@@ -10,10 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ビルド不要の素の **HTML / CSS / JavaScript** のみで構成され、フレームワーク（React等）・npm・バンドラは一切使わない。ファイルを編集して `git push` するだけで Render が自動デプロイする。
 
 - **公開URL**: https://www.momoshita.jp
-- **GitHub**: https://github.com/Toukasonjuku-AI/toukasonjuku-website
+- **GitHub**: https://github.com/toukasonjuku/toukasonjuku-website（`git remote -v`で確認した実際のリモート。README等の旧記載「Toukasonjuku-AI」は誤り）
 - **ホスティング**: Render（Static Site・無料プラン）
 - **旧URL**: `toukasonjuku-website.onrender.com` → `index.html` 冒頭のスクリプトで新ドメインへ自動リダイレクト
-- **プロジェクト管理（タスク・議事録）**: [Notion](https://app.notion.com/p/3c0edf84e39e81149387d451475ce129?v=3c0edf84e39e8140a5be000c083a2aa4) — **タスクの正はNotion**。非公開ページでWebFetch不可のため、内容が更新されたらユーザーに要点を貼ってもらい、`docs/tasks.md`（タスクのミラー）へ反映する。齟齬があればNotionを優先する
+- **プロジェクト管理（タスク・議事録）**: [Notion「桃下村塾」データベース内プロジェクトページ](https://app.notion.com/p/3c0edf84e39e81149387d451475ce129) — **タスクの正はNotion**。2026-08-26以降Notion MCP接続済みでAIが直接読み書きする。ローカルの `docs/tasks.md`（タスクのミラー）にも同時に反映する。齟齬があればNotionを優先する
+- **開発インターフェース**: 2026-08-26以降、cmux経由のCLIベースClaude Codeに移行
 
 ### 現状（2026-08時点）
 
