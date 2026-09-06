@@ -1,4 +1,52 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Notion__notion-fetch",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-search-agents",
+      "mcp__claude_ai_Notion__notion-search-skills",
+      "mcp__claude_ai_Notion__notion-get-comments",
+      "mcp__claude_ai_Notion__notion-get-teams",
+      "mcp__claude_ai_Notion__notion-get-users",
+      "mcp__claude_ai_Notion__notion-list-favorite-pages",
+      "mcp__claude_ai_Notion__notion-list-private-pages",
+      "mcp__claude_ai_Notion__notion-list-recent-pages",
+      "mcp__claude_ai_Notion__notion-list-shared-pages",
+      "mcp__claude_ai_Notion__notion-query-data-sources",
+      "mcp__claude_ai_Notion__notion-query-multiple-data-sources",
+      "mcp__claude_ai_Notion__notion-query-meeting-notes",
+      "mcp__claude_ai_Notion__notion-get-async-task",
+      "mcp__claude_ai_Notion__notion-download-attachment",
+      "mcp__claude_ai_Notion__notion-create-pages",
+      "mcp__claude_ai_Notion__notion-update-page",
+      "mcp__claude_ai_Notion__notion-create-comment",
+      "mcp__claude_ai_Notion__notion-create-attachment",
+      "mcp__claude_ai_Notion__notion-create-file-upload",
+      "mcp__claude_ai_Notion__notion-update-verification",
+      "mcp__claude_ai_Notion__notion-create-database",
+      "mcp__claude_ai_Notion__notion-update-data-source",
+      "mcp__claude_ai_Notion__notion-create-folder",
+      "mcp__claude_ai_Notion__notion-update-folder",
+      "mcp__claude_ai_Notion__notion-create-view",
+      "mcp__claude_ai_Notion__notion-update-view",
+      "mcp__claude_ai_Notion__notion-move-pages",
+      "mcp__claude_ai_Notion__notion-duplicate-page",
+      "mcp__claude_ai_Notion__notion-check-mcp-next-steps",
+      "mcp__claude_ai_Notion__notion-show-advanced-analysis-next-steps"
+    ],
+    "ask": [
+      "mcp__claude_ai_Notion__notion-convert-page-to-skill",
+      "mcp__claude_ai_Notion__notion-spawn-session",
+      "mcp__claude_ai_Notion__notion-send-message-to-session",
+      "mcp__claude_ai_Notion__notion-wait-session",
+      "mcp__claude_ai_Notion__notion-stop-session",
+      "mcp__claude_ai_Notion__notion-query-sessions",
+      "mcp__claude_ai_Notion__notion-search-sessions",
+      "mcp__claude_ai_Notion__notion-get-session-status",
+      "mcp__claude_ai_Notion__notion-list-session-events",
+      "mcp__claude_ai_Notion__notion-read-session-event"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
