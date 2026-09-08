@@ -81,6 +81,36 @@
 
 現状はフラットな一覧＋接頭辞命名（`ach-*.jpg`, `activity-*.jpg`, `phil-*.png` 等）。マルチページ化後は `images/shared/` `images/top/` `images/philosophy/` `images/activities/` `images/achievements/` `images/vision/` `images/news/` のようにページ別サブフォルダへ再編する。AIがどのページの画像かを迷わず配置・参照できるようにするため。
 
+### 4. 更新頻度によるページ設計方針（2026-09-08決定）
+
+このサイトはデータベース・CMSを持たない完全静的サイトである。「更新のしやすさ」はページ構造ではなく、**運用の頻度で情報の置き場所を使い分ける**方針とする。
+
+| ページ | 更新頻度 | 役割 |
+|---|---|---|
+| `/activities`（活動内容） | 月1くらい | 団体の活動を示す「まとめページ」（ダイジェスト） |
+| `/achievements`（実績） | 月1くらい | 団体の実績を示す「まとめページ」（ダイジェスト） |
+| `/news`（お知らせ） | 随時 | 個別の出来事を都度追記する「速報」 |
+
+頻繁に発生するネタ（イベント開催報告、コラボの告知など）は基本的に `/news` へ流し込み、`/activities` と `/achievements` はそれを定期的に取捨選択して反映する「ダイジェスト側」という役割分担にする。
+
+**`/news` の設計：個別記事ページ＋自動生成の一覧**。一覧のみ（1ファイルへの追記形式）ではなく、記事ごとに1ファイルを作り、一覧ページは `build.js` が自動生成する方式を採用する。理由は、マルチページ化の目的である「ページ単位のSEOキーワード最適化」に直結するため（個別記事なら「瀬戸高校 出前授業」のような固有名詞で検索にヒットしうる、SNS共有時のOGPも記事ごとに出せる）。
+
+想定ディレクトリ構成（イメージ）:
+
+```
+src/
+  content/news/
+    2026-09-08-seto-koko.html      ← 新しい記事＝新しいファイル1つ
+    2026-08-20-collab-event.html
+  partials/news-article.html        ← 記事ページ共通の型
+  pages/news.html                   ← 一覧ページの型（中身は自動生成）
+build.js                            ← content/news配下を読み、
+                                        ①個別ページをdist/news/配下に出力
+                                        ②一覧ページに自動で並べる
+```
+
+個別記事のURL形（`/news/<slug>/` にするか `/news/<ファイル名>.html` にするか等）は未確定。`build.js` 実装時に決める。実装（`build.js` の拡張・`news-article.html` テンプレート作成）は別フェーズで着手する。着手時は `docs/tasks.md` のスコープを更新すること。
+
 ### 決定を反映した想定ディレクトリ構成
 
 ```
@@ -99,14 +129,17 @@
 │   ├── partials/
 │   │   ├── head.html
 │   │   ├── header.html
-│   │   └── footer.html
+│   │   ├── footer.html
+│   │   └── news-article.html    ← お知らせ記事ページ共通の型（4節参照）
+│   ├── content/
+│   │   └── news/                ← お知らせ記事1件＝1ファイル（4節参照）
 │   ├── pages/
 │   │   ├── index.html
 │   │   ├── philosophy/index.html
 │   │   ├── activities/index.html
 │   │   ├── achievements/index.html
 │   │   ├── vision/index.html
-│   │   └── news/index.html
+│   │   └── news.html            ← 一覧ページの型（中身はbuild.jsが自動生成）
 │   ├── style.css
 │   └── script.js
 ├── images/
