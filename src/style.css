@@ -94,8 +94,8 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   filter:drop-shadow(0 1px 3px rgba(0,0,0,.15));
 }
 .brand-text{display:flex;flex-direction:column}
-.brand-jp{font-family:var(--f-jp);font-weight:700;font-size:22px;letter-spacing:.18em}
-.brand-en{font-family:var(--f-en);font-size:10px;letter-spacing:.4em;margin-top:6px;opacity:.7}
+.brand-jp{font-family:var(--f-jp);font-weight:700;font-size:24px;letter-spacing:.18em}
+.brand-en{font-family:var(--f-en);font-size:12px;letter-spacing:.36em;margin-top:6px;opacity:.75}
 
 .nav-desktop ul{display:flex;gap:34px;list-style:none}
 @media (max-width:1280px){
@@ -105,9 +105,9 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 .nav-desktop a{
   color:#fff;
   font-family:var(--f-en);
-  font-size:14px;
-  letter-spacing:.25em;
-  font-weight:500;
+  font-size:16px;
+  letter-spacing:.2em;
+  font-weight:600;
   position:relative;
   padding:6px 0;
   transition:color .4s var(--ease);
@@ -219,6 +219,7 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 .nav-mobile.open li:nth-child(5) a{animation-delay:.44s}
 .nav-mobile.open li:nth-child(6) a{animation-delay:.50s}
 .nav-mobile.open li:nth-child(7) a{animation-delay:.56s}
+.nav-mobile.open li:nth-child(8) a{animation-delay:.62s}
 @keyframes navFade{to{opacity:1;transform:translateY(0)}}
 
 .nav-mobile .nm-en{
@@ -230,8 +231,8 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 }
 .nav-mobile .nm-jp{
   font-family:var(--f-jp);
-  font-size:12px;
-  letter-spacing:.28em;
+  font-size:14px;
+  letter-spacing:.24em;
   color:var(--c-peach);
   font-weight:500;
 }
@@ -242,11 +243,11 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   margin-top:38px;
   opacity:0;
 }
-.nav-mobile.open .nav-mobile-sns{animation:navFade .5s var(--ease) .62s forwards}
+.nav-mobile.open .nav-mobile-sns{animation:navFade .5s var(--ease) .68s forwards}
 .nav-mobile-sns a{
   font-family:var(--f-en);
-  font-size:13px;
-  letter-spacing:.3em;
+  font-size:15px;
+  letter-spacing:.28em;
   color:#cfc6c3;
 }
 .nav-mobile-sns a:active{color:var(--c-peach)}
@@ -1328,24 +1329,24 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   display:block;
 }
 .footer-brand .brand-en{
-  color:var(--c-peach);font-family:var(--f-en);font-size:11px;
+  color:var(--c-peach);font-family:var(--f-en);font-size:13px;
   letter-spacing:.4em;display:block;margin-top:6px;
 }
 .footer-tagline{
-  margin-top:20px;font-size:13px;line-height:1.9;letter-spacing:.08em;
+  margin-top:20px;font-size:15px;line-height:1.9;letter-spacing:.08em;
 }
-.footer-nav ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.footer-nav ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
 .footer-nav a{
-  font-family:var(--f-en);font-size:12px;letter-spacing:.3em;color:#bfb6b3;
+  font-family:var(--f-en);font-size:15px;font-weight:600;letter-spacing:.2em;color:#bfb6b3;
   transition:color .3s var(--ease);
 }
 .footer-nav a:hover{color:var(--c-peach)}
-.footer-meta p{font-size:13px;line-height:2;letter-spacing:.04em}
+.footer-meta p{font-size:15px;line-height:2;letter-spacing:.04em}
 .footer-meta a{color:#fff;border-bottom:1px solid rgba(255,255,255,.2);transition:color .3s, border-color .3s}
 .footer-meta a:hover{color:var(--c-peach);border-color:var(--c-peach)}
 .copyright{
   text-align:center;padding:24px 0;
-  font-family:var(--f-en);font-size:11px;letter-spacing:.3em;color:#776e6b;
+  font-family:var(--f-en);font-size:13px;letter-spacing:.26em;color:#8a817e;
 }
 
 /* =========================================================
@@ -1357,7 +1358,7 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .value-card:nth-child(4){grid-column:1 / 3}
   .value-card:nth-child(5){grid-column:3 / 5}
 }
-@media (max-width: 1080px){
+@media (max-width: 1180px){
   .nav-desktop{display:none}
   .hamburger{display:block}
 }
@@ -1395,7 +1396,7 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .ach-text{font-size:15.5px}
   .future-text{font-size:18px}
   .contact-lead{font-size:19px}
-  .nav-desktop a{font-size:15px}
+  .nav-desktop a{font-size:17px}
 }
 /* スマホではカード一覧を横スワイプにして、縦のスクロール量を減らす（2026-09-17）
    1枚を約85%幅にし、隣のカードを少し見せて横に続くことを示す。自動で流れる動きはデザイン改良フェーズで検討 */
