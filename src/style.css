@@ -1397,6 +1397,34 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .contact-lead{font-size:19px}
   .nav-desktop a{font-size:15px}
 }
+/* スマホではカード一覧を横スワイプにして、縦のスクロール量を減らす（2026-09-17）
+   1枚を約85%幅にし、隣のカードを少し見せて横に続くことを示す。自動で流れる動きはデザイン改良フェーズで検討 */
+@media (max-width: 760px){
+  .ach-grid,
+  .mvv-grid{
+    display:flex;
+    gap:14px;
+    max-width:none;
+    margin:0 calc(-1 * var(--gutter));
+    padding:4px var(--gutter) 12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:var(--gutter);
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .ach-grid::-webkit-scrollbar,
+  .mvv-grid::-webkit-scrollbar{display:none}
+  .ach-grid .ach-card:nth-child(n),
+  .mvv-grid .mvv-card:nth-child(n){
+    flex:0 0 85%;
+    max-width:none;
+    width:auto;
+    grid-column:auto;
+    justify-self:auto;
+    scroll-snap-align:start;
+  }
+}
 /* hide mobile-only line break on desktop */
 .sp-br{display:none}
 
