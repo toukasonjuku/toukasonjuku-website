@@ -20,7 +20,7 @@
 
 ## 今後の方針：マルチページ化
 
-**現在進行中の最重要タスク**: 1ページ構成 → マルチページ構成（`/` `/philosophy` `/activities` `/achievements` `/vision` ＋お知らせページ）への構造変更。デザインのトンマナは維持したまま、情報構造だけを変える。理想完成 **2026-09-18**、最終期限 **2026-09-28**。
+**現在進行中の最重要タスク**: 1ページ構成 → マルチページ構成（`/` `/philosophy` `/activities` `/achievements` `/future` ＋お知らせページ）への構造変更。デザインのトンマナは維持したまま、情報構造だけを変える。理想完成 **2026-09-18**、最終期限 **2026-09-28**。
 
 詳細な構成・目的・スケジュールは [`docs/content-plan.md`](docs/content-plan.md)、作業スコープは [`docs/tasks.md`](docs/tasks.md) を参照。この方針が実装に反映され次第、CLAUDE.mdの「ファイル構成」「セクション構成」節も実態に合わせて更新すること。
 
@@ -62,7 +62,8 @@ git push                 # push後、Renderが自動検知して1〜2分で本�
     ├── tasks.md          ← タスク管理（Notionのミラー・タスクの正はNotion）
     ├── content-plan.md   ← マルチページ化の計画書（URL構成・ページ別コンテンツ・スケジュール等）
     ├── content-authoring.md ← ページ執筆のルール・チェックリスト
-    └── worklog.md        ← 作業ログ（コミットごとに先頭へ追記・運用必須）
+    ├── worklog.md        ← 作業ログ（コミットごとに先頭へ追記・運用必須）
+    └── prompts/          ← 実装着手用プロンプト（例: top-page-implementation.md）
 ```
 
 `dist/` はビルド生成物（`.gitignore`対象）。現時点ではRenderはこのビルドを使っておらず、ルート直下の `index.html` / `style.css` / `script.js` がそのまま本番配信されている（Render設定切り替えについては `AGENTS.md` を参照）。

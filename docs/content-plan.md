@@ -1,7 +1,7 @@
 # マルチページ化 計画書
 
 出典: [Notion](https://app.notion.com/p/3c0edf84e39e81149387d451475ce129?v=3c0edf84e39e8140a5be000c083a2aa4)（非公開・WebFetch不可のため、ユーザーが貼った内容をこのファイルへ反映している）
-最終反映日: 2026-08-26
+最終反映日: 2026-09-17
 
 ## 現状
 
@@ -24,13 +24,13 @@
 | `/philosophy` | 理念 |
 | `/activities` | 活動内容 |
 | `/achievements` | 実績 |
-| `/vision` | 展望 |
+| `/future` | 展望（2026-09-17に `/vision` から改名。トップのセクション名「Future」と揃えるため） |
 | （新設）お知らせページ | 随時更新できるお知らせ一覧 |
 | Contact | 全ページ共通フッター（`#contact`）。トップページ末尾にもセクションとして残す |
 
 ## ページ別コンテンツ構成
 
-- **トップページ**: ビジュアルベース＋各ページのダイジェスト（写真＋一言＋詳しく見るリンク）
+- **トップページ**: 手書き案（`HP構成案_手書き/トップページ案_v1.pdf`）に従う。詳細は下記「5. トップページ構成」
 - **理念ページ**: 成り立ち／Mission・Vision／5つのバリュー（現行の3セクションを統合）
 - **活動内容ページ**: 定例会／ももした道場ビジネス／ももした道場テック／遊びイベント／各役職紹介
 - **実績ページ**: 協生農法／サークルコラボ／小寺先生ワークショップ／IT企業交流会
@@ -79,7 +79,7 @@
 
 ### 3. `images/`フォルダの構成 → **ページ別サブフォルダに再編**
 
-現状はフラットな一覧＋接頭辞命名（`ach-*.jpg`, `activity-*.jpg`, `phil-*.png` 等）。マルチページ化後は `images/shared/` `images/top/` `images/philosophy/` `images/activities/` `images/achievements/` `images/vision/` `images/news/` のようにページ別サブフォルダへ再編する。AIがどのページの画像かを迷わず配置・参照できるようにするため。
+現状はフラットな一覧＋接頭辞命名（`ach-*.jpg`, `activity-*.jpg`, `phil-*.png` 等）。マルチページ化後は `images/shared/` `images/top/` `images/philosophy/` `images/activities/` `images/achievements/` `images/future/` `images/news/` のようにページ別サブフォルダへ再編する。AIがどのページの画像かを迷わず配置・参照できるようにするため。
 
 ### 4. 更新頻度によるページ設計方針（2026-09-08決定）
 
@@ -138,12 +138,12 @@ build.js                            ← content/news配下を読み、
 │   │   ├── philosophy/index.html
 │   │   ├── activities/index.html
 │   │   ├── achievements/index.html
-│   │   ├── vision/index.html
+│   │   ├── future/index.html
 │   │   └── news.html            ← 一覧ページの型（中身はbuild.jsが自動生成）
 │   ├── style.css
 │   └── script.js
 ├── images/
-│   ├── shared/ / top/ / philosophy/ / activities/ / achievements/ / vision/ / news/
+│   ├── shared/ / top/ / philosophy/ / activities/ / achievements/ / future/ / news/
 ├── qr/
 ├── make_qr.py
 ├── robots.txt
@@ -152,6 +152,42 @@ build.js                            ← content/news配下を読み、
 ```
 
 実装（partials切り出し・build.js作成・images再編）は別フェーズで着手する。着手時は `docs/tasks.md` のスコープを更新すること。
+
+### 5. トップページ構成（2026-09-17確定）
+
+出典: りんの手書き案 `HP構成案_手書き/トップページ案_v1.pdf`（参考: サントリー https://www.suntory.co.jp/ ・ /company/）。当初の「ダイジェストのみ」方針ではなく、**手書き案に従い現行1ページ構成の本文をベースに再構成する**。
+
+#### セクション順
+
+| No. | セクション（`id`） | 内容 | 現行からの変更 |
+|---|---|---|---|
+| — | Hero（`#top`） | 「簡単に、だけど本気で。AI時代を生き抜く力を。」 | なし |
+| 01 | Philosophy 桃下村塾の理念（`#about`） | 現行本文・ミーティング写真・図解2枚（`phil-tree.png` / `phil-jinzai.png`）と小見出し2つ（「めざすのは、社会に価値を生み出す人材」「リーダーではなく、『自分』を育てる」） | なし（写真・図解も残す） |
+| 02 | Origin 成り立ち（`#origin`） | 現行のまま | `id` を付与 |
+| 03 | MVV（`#mvv`） | Mission／Vision／Value の3カード横並び。Mission・Visionは見出し一文のみ、Valueは5つのバリュー名（01〜05）のみ。本文は `/philosophy/` へ | **現行の Mission/Vision セクションと 03 Values を統合**。日本語見出しは `[要確認]`（仮案「桃下村塾が大切にすること」）。背景は方眼背景に揃える |
+| 04 | Activities 活動内容（`#activities`） | ももした道場／定例会／イベント・コラボレーションの写真カード3枚＋写真ギャラリー | なし（既存写真は引き続き使用） |
+| 05 | Achievements これまでの実績（`#achievements`） | 現行の5カード（協生PJ／Tech Study Lab／サークルコラボ／高校生への授業／外部イベント） | なし（高校生への授業は写真なしのまま） |
+| 06 | Future 今後の展望（`#future`） | 「2026年、数百人規模のホールイベントを岡山で開催する。」 | 数字欄（数百人／週2回／2025〜）を**一旦削除**。背景は現行（`hero.jpg`＋オーバーレイ）を転用 |
+| 07 | News お知らせ（`#news`） | 日付＋タイトルの最新3件＋「一覧を見る →」。当面は手書きで直接記述（`/news` システム完成後に自動化）。記事は `[要確認]` の仮の記事 | **新設** |
+| 08 | Contact お問い合わせ（`#contact`） | ご質問、ご見学、取材・コラボレーション…＋Email／Instagram | 番号 07→08 |
+| — | フッター | 現行のまま | なし |
+
+#### 詳細ページへの導線
+- 各セクションの見出しをリンクにし、セクション末尾に「詳しく見る →」を置く（カード単位のリンクは付けない）
+- リンク先: Philosophy → `/philosophy/`、Origin → `/philosophy/#origin`、MVV → `/philosophy/#mvv`、Activities → `/activities/`、Achievements → `/achievements/`、Future → `/future/`、News → `/news/`（Contactはリンクなし）
+- 詳細ページは未作成のため、当面リンク先は404になる。各ページ作成で順次解消する（本番反映は全ページ完成後）
+
+#### ヘッダー
+- メニューはトップのセクションに揃える: `Philosophy / Origin / MVV / Activities / Achievements / Future / News / Contact`
+- リンク先は上記「詳細ページへの導線」と同じ。Contact は `/#contact`
+- スマホメニューの日本語表記: 理念／成り立ち／MVV／活動内容／実績／今後の展望／お知らせ／お問い合わせ
+- 挙動: ページ最上部では常に表示、下スクロールで隠れ、上スクロールで表示（PC・スマホ共通）
+- 桃色の下線: ホバー時と現在ページの項目のみ
+
+#### 今回やらないこと（後のデザイン改良フェーズで検討）
+- 手書き案メモ「至る所に桃のモチーフを置く」（読み取り不能箇所があり、ユーザー判断で保留）
+- サントリーを参考にした凝ったデザイン・アニメーション
+- Futureの「夕焼けの背景」（現行の背景画像を転用）
 
 ---
 
