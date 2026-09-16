@@ -14,6 +14,14 @@
 
 ---
 
+### 2026-09-17 MVV日本語見出しを確定・GitHubアカウント整理（関連タスク: docs/tasks.md「トップページ(index)再構成」）
+- 内容: りんのレビューでMVVの日本語見出しが「桃下村塾が大切にすること」に確定したので、`[要確認]`を差し替えて `content-plan.md` / `tasks.md` にも反映。りんの指示で、gh CLIから `MoriokaRin-Builbase` アカウントをログアウト（残りは `MoriokaRin` だけ）。このリポジトリのコミット作成者を `.git/config` で `MoriokaRin <morioka142857@gmail.com>` に設定（PC全体の設定は会社のアドレスのまま。過去のコミットは書き換えていない）
+- コミット: 本コミット
+- 確認: `node build.js`成功、`dist/index.html`に見出しが出ていることを確認。`gh auth status`で `MoriokaRin` だけがログインしていること、`git config user.email` が morioka142857@gmail.com になっていることを確認
+- 次にやること: お知らせ記事3件の確定、理念ページ(/philosophy)
+
+---
+
 ### 2026-09-17 トップページを手書き案どおりに再構成（関連タスク: docs/tasks.md「トップページ(index)再構成」）
 - 内容: `docs/prompts/top-page-implementation.md` に沿って実装。(1) `src/pages/index.html`: Mission/VisionとValuesを「03 MVV」（3カード）に統合、Originに`id="origin"`付与、Futureの数字欄を削除、「07 News」を新設（仮の記事3件）、Contactを08に。各セクションの見出しを詳細ページへのリンクにし、「詳しく見る →」を追加。既存の写真・図解・ギャラリーはすべて残した (2) `header.html`/`footer.html`: ナビを Philosophy/Origin/MVV/Activities/Achievements/Future/News/Contact に（フッターも旧アンカー`#mission`/`#values`が切れるため合わせて更新） (3) `script.js`: 下スクロールでヘッダーを隠し上スクロールで表示、今いるページの項目に`.is-current`、スマホメニューを閉じたときのスクロール位置の復元をinstantにした（smoothだと閉じた直後にヘッダーが隠れていた） (4) `style.css`: MVV・News・見出しリンク・「詳しく見る」のスタイル、8項目に対応するためPCナビの間隔を1240px以下で詰め、1080px以下はハンバーガーメニューに。旧`.mission-vision`/`.values`/`.future-stats`のCSSは理念ページで再利用するため残した。CSSのバージョン番号を20260917に更新。GitHubの設定: このリポジトリだけ`.git/config`で認証を`MoriokaRin`アカウントに固定し、`feature/multipage-restructure`を初めてpush（ユーザー承認済み）
 - コミット: 本コミット

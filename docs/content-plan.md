@@ -164,7 +164,7 @@ build.js                            ← content/news配下を読み、
 | — | Hero（`#top`） | 「簡単に、だけど本気で。AI時代を生き抜く力を。」 | なし |
 | 01 | Philosophy 桃下村塾の理念（`#about`） | 現行本文・ミーティング写真・図解2枚（`phil-tree.png` / `phil-jinzai.png`）と小見出し2つ（「めざすのは、社会に価値を生み出す人材」「リーダーではなく、『自分』を育てる」） | なし（写真・図解も残す） |
 | 02 | Origin 成り立ち（`#origin`） | 現行のまま | `id` を付与 |
-| 03 | MVV（`#mvv`） | Mission／Vision／Value の3カード横並び。Mission・Visionは見出し一文のみ、Valueは5つのバリュー名（01〜05）のみ。本文は `/philosophy/` へ | **現行の Mission/Vision セクションと 03 Values を統合**。日本語見出しは `[要確認]`（仮案「桃下村塾が大切にすること」）。背景は方眼背景に揃える |
+| 03 | MVV（`#mvv`） | Mission／Vision／Value の3カード横並び。Mission・Visionは見出し一文のみ、Valueは5つのバリュー名（01〜05）のみ。本文は `/philosophy/` へ | **現行の Mission/Vision セクションと 03 Values を統合**。日本語見出しは「桃下村塾が大切にすること」（2026-09-17確定）。背景は方眼背景に揃える |
 | 04 | Activities 活動内容（`#activities`） | ももした道場／定例会／イベント・コラボレーションの写真カード3枚＋写真ギャラリー | なし（既存写真は引き続き使用） |
 | 05 | Achievements これまでの実績（`#achievements`） | 現行の5カード（協生PJ／Tech Study Lab／サークルコラボ／高校生への授業／外部イベント） | なし（高校生への授業は写真なしのまま） |
 | 06 | Future 今後の展望（`#future`） | 「2026年、数百人規模のホールイベントを岡山で開催する。」 | 数字欄（数百人／週2回／2025〜）を**一旦削除**。背景は現行（`hero.jpg`＋オーバーレイ）を転用 |
