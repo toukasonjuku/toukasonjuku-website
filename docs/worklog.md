@@ -14,6 +14,14 @@
 
 ---
 
+### 2026-09-17 トップページを手書き案どおりに再構成（関連タスク: docs/tasks.md「トップページ(index)再構成」）
+- 内容: `docs/prompts/top-page-implementation.md` に沿って実装。(1) `src/pages/index.html`: Mission/VisionとValuesを「03 MVV」（3カード）に統合、Originに`id="origin"`付与、Futureの数字欄を削除、「07 News」を新設（仮の記事3件）、Contactを08に。各セクションの見出しを詳細ページへのリンクにし、「詳しく見る →」を追加。既存の写真・図解・ギャラリーはすべて残した (2) `header.html`/`footer.html`: ナビを Philosophy/Origin/MVV/Activities/Achievements/Future/News/Contact に（フッターも旧アンカー`#mission`/`#values`が切れるため合わせて更新） (3) `script.js`: 下スクロールでヘッダーを隠し上スクロールで表示、今いるページの項目に`.is-current`、スマホメニューを閉じたときのスクロール位置の復元をinstantにした（smoothだと閉じた直後にヘッダーが隠れていた） (4) `style.css`: MVV・News・見出しリンク・「詳しく見る」のスタイル、8項目に対応するためPCナビの間隔を1240px以下で詰め、1080px以下はハンバーガーメニューに。旧`.mission-vision`/`.values`/`.future-stats`のCSSは理念ページで再利用するため残した。CSSのバージョン番号を20260917に更新。GitHubの設定: このリポジトリだけ`.git/config`で認証を`MoriokaRin`アカウントに固定し、`feature/multipage-restructure`を初めてpush（ユーザー承認済み）
+- コミット: 本コミット
+- 確認: `node build.js`成功。ヘッドレスChrome（CDP）で1440/1250/1100/1081/1080/390px幅を確認: セクション順、横スクロールが出ないこと、ナビが1081px以上でロゴと重ならず1080px以下でハンバーガーに切り替わること、ヘッダーの隠れる/出る動き（スクロール位置 0→1500→2500→2300→60）、スマホメニューの開閉、コンソールエラー0件。PC/スマホで各セクションのスクリーンショットを目視確認
+- 次にやること: りんのレビュー。`[要確認]`（MVVの日本語見出し、お知らせ記事3件の日付とタイトル）を確定。承認後にNotionを完了にし、理念ページ(/philosophy)へ
+
+---
+
 ### 2026-09-17 トップページ構成を手書き案から確定・実装プロンプト作成（関連タスク: docs/tasks.md「トップページ(index)再構成」）
 - 内容: りんの手書き案（`HP構成案_手書き/トップページ案_v1.pdf`）を読み取り、未確定点をQ&Aで解消。決定事項（MVV統合／Future後にNews新設／ヘッダーはセクションに揃え上スクロールで表示／既存写真は継続使用／Futureの数字欄を一旦削除／桃モチーフ等の凝ったデザインは後回し／展望ページURLを`/vision`→`/future`へ改名）を`docs/content-plan.md`「5. トップページ構成」に記録。`docs/tasks.md`・`CLAUDE.md`のURL表記を更新。実装用プロンプト`docs/prompts/top-page-implementation.md`を作成。Notionは既存タスク「トップページ(index)再構成」に決定概要を追記（新規作成はせず）、「展望ページ(/future)作成」に改名、プロジェクトページと「開発方針」のURL表記を更新。実装は未着手
 - コミット: 本コミット

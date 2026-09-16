@@ -4,13 +4,34 @@
 
 (() => {
   // ---- Header scroll state ----
+  // 最上部付近では常に表示、下スクロールで隠し、上スクロールで再表示する
   const header = document.getElementById('siteHeader');
+  let lastScrollY = window.scrollY;
+  let menuOpen = false;
   const onScroll = () => {
-    if (window.scrollY > 40) header.classList.add('scrolled');
+    const y = window.scrollY;
+    if (y > 40) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
+
+    if (menuOpen) return;
+    if (y <= 120) header.classList.remove('is-hidden');
+    else if (y > lastScrollY + 4) header.classList.add('is-hidden');
+    else if (y < lastScrollY - 4) header.classList.remove('is-hidden');
+    lastScrollY = y;
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // ---- Current page in nav ----
+  // ハッシュなしのリンクだけを対象に、今いるページの項目へ .is-current を付ける
+  const here = location.pathname.replace(/index\.html$/, '');
+  document.querySelectorAll('.nav-desktop a').forEach(a => {
+    const url = new URL(a.href, location.href);
+    if (!url.hash && url.pathname === here && here !== '/') {
+      a.classList.add('is-current');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
 
   // ---- Hamburger toggle (mobile-safe scroll lock) ----
   const burger = document.getElementById('hamburger');
@@ -31,18 +52,23 @@
     document.body.style.left = '';
     document.body.style.right = '';
     document.body.style.width = '';
-    window.scrollTo(0, savedScrollY);
+    // html{scroll-behavior:smooth} の影響でアニメーションしないよう instant で戻す
+    window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+    lastScrollY = window.scrollY;
   };
 
   const openMenu = () => {
     burger.classList.add('open');
     navMobile.classList.add('open');
+    menuOpen = true;
+    header.classList.remove('is-hidden');
     lockScroll();
   };
   const closeMenu = () => {
     burger.classList.remove('open');
     navMobile.classList.remove('open');
     unlockScroll();
+    menuOpen = false;
   };
 
   burger.addEventListener('click', () => {

@@ -68,11 +68,11 @@ git push                 # push後、Renderが自動検知して1〜2分で本�
 
 `dist/` はビルド生成物（`.gitignore`対象）。現時点ではRenderはこのビルドを使っておらず、ルート直下の `index.html` / `style.css` / `script.js` がそのまま本番配信されている（Render設定切り替えについては `AGENTS.md` を参照）。
 
-### `index.html` のセクション構成（`id` はナビと同期）
+### トップページ（`src/pages/index.html`）のセクション構成（`id` はナビと同期）
 
-`#top`（Hero）→ `#about`（理念）→ `#mission`（Mission/Vision）→ `#values`（バリュー）→ `#activities`（活動内容）→ `#achievements`（実績）→ `#future`（今後の展望）→ `#contact`（お問い合わせ）
+`#top`（Hero）→ `#about`（01 Philosophy）→ `#origin`（02 Origin）→ `#mvv`（03 MVV）→ `#activities`（04）→ `#achievements`（05）→ `#future`（06）→ `#news`（07 お知らせ）→ `#contact`（08）
 
-セクション追加・削除時は、ヘッダーナビ（PC/モバイル両方）の `href="#..."` リンクも合わせて更新すること。
+仕様は `docs/content-plan.md`「5. トップページ構成」。ヘッダー/フッターのナビ（`src/partials/header.html` のPC・モバイル両方、`footer.html`）は各詳細ページ（`/philosophy/` 等）へのリンクなので、セクションやページを追加・削除したら3箇所とも更新すること。
 
 ## 技術スタック・重要な注意
 

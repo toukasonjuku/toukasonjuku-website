@@ -56,9 +56,12 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 .site-header{
   position:fixed;top:0;left:0;width:100%;z-index:100;
   background:rgba(255,255,255,0);
-  transition:background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
+  transition:background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease), top .45s var(--ease);
   padding:22px 0;
 }
+/* 下スクロールで隠し、上スクロールで再表示（script.js が .is-hidden を付け外し）
+   transform だと子要素の fixed（スマホメニュー）が崩れるため top で動かす */
+.site-header.is-hidden{top:-160px}
 .site-header.scrolled{
   background:linear-gradient(180deg,
     rgba(255,255,255,.98) 0%,
@@ -95,6 +98,10 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 .brand-en{font-family:var(--f-en);font-size:10px;letter-spacing:.4em;margin-top:6px;opacity:.7}
 
 .nav-desktop ul{display:flex;gap:34px;list-style:none}
+@media (max-width:1240px){
+  .nav-desktop ul{gap:22px}
+  .nav-desktop a{letter-spacing:.14em}
+}
 .nav-desktop a{
   color:#fff;
   font-family:var(--f-en);
@@ -112,6 +119,7 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   transition:width .35s var(--ease), left .35s var(--ease);
 }
 .nav-desktop a:hover::after{width:100%;left:0}
+.nav-desktop a.is-current::after{width:100%;left:0}
 
 .hamburger{
   display:none;
@@ -395,6 +403,45 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   font-weight:600;
 }
 .section-no{font-weight:600}
+
+/* 見出しリンク（詳細ページへの導線）: 普段は見出しのまま、ホバー時のみ色が変わる */
+.title-link{
+  display:flex;flex-direction:column;
+  gap:inherit;align-items:inherit;
+  color:inherit;
+}
+.title-link .en{transition:color .35s var(--ease)}
+.title-link:hover .en{color:var(--c-peach-dk)}
+.future-title .title-link:hover .en{color:var(--c-peach)}
+
+/* 「詳しく見る →」 */
+.more-link-wrap{
+  position:relative;z-index:2;
+  margin-top:clamp(40px, 6vw, 64px);
+  text-align:right;
+}
+.more-link-wrap.left{text-align:left}
+.more-link{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--f-jp);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.2em;
+  color:var(--c-deep);
+  padding:6px 2px 8px;
+  border-bottom:1px solid var(--c-peach);
+  transition:color .35s var(--ease), border-color .35s var(--ease);
+}
+.more-arrow{
+  font-family:var(--f-en);
+  color:var(--c-peach-dk);
+  transition:transform .35s var(--ease);
+}
+.more-link:hover{color:var(--c-peach-dk);border-color:var(--c-peach-dk)}
+.more-link:hover .more-arrow{transform:translateX(6px)}
+.more-link.light{color:var(--c-bg);border-color:var(--c-peach)}
+.more-link.light .more-arrow{color:var(--c-peach)}
+.more-link.light:hover{color:var(--c-peach-lt)}
 
 /* Reveal on scroll */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
@@ -751,6 +798,63 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 }
 
 /* =========================================================
+   MVV（Mission / Vision / Value）
+   ========================================================= */
+.mvv{background:var(--c-bg)}
+.mvv-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+  align-items:stretch;
+}
+.mvv-card{
+  position:relative;
+  padding:42px 34px 38px;
+  background:var(--c-bg);
+  border:1px solid var(--c-line);
+  border-top:3px solid var(--c-peach);
+}
+.mvv-label{
+  font-family:var(--f-en);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.5em;
+  color:var(--c-peach-dk);
+  display:block;
+  margin-bottom:22px;
+}
+.mvv-headline{
+  font-family:var(--f-jp);
+  font-weight:700;
+  font-size:clamp(19px, 1.9vw, 24px);
+  line-height:1.75;
+  letter-spacing:.06em;
+  color:var(--c-deep);
+}
+.mvv-values{
+  list-style:none;
+  margin-top:20px;
+  border-top:1px solid var(--c-line);
+}
+.mvv-values li{
+  display:flex;align-items:baseline;gap:16px;
+  padding:11px 0;
+  border-bottom:1px solid var(--c-line);
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.06em;
+  color:var(--c-ink-soft);
+  line-height:1.6;
+}
+.mvv-no{
+  font-family:var(--f-en);
+  font-size:17px;
+  font-weight:600;
+  color:var(--c-peach-dk);
+  min-width:1.6em;
+}
+
+/* =========================================================
    ACTIVITIES
    ========================================================= */
 .activities{background:var(--c-bg-soft)}
@@ -1009,6 +1113,45 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 }
 
 /* =========================================================
+   NEWS
+   ========================================================= */
+.news{background:var(--c-bg-soft)}
+.news-list{
+  list-style:none;
+  border-top:1px solid var(--c-line);
+}
+.news-item a{
+  display:grid;
+  grid-template-columns:minmax(120px, auto) 1fr auto;
+  gap:clamp(16px, 4vw, 48px);
+  align-items:baseline;
+  padding:26px 10px;
+  border-bottom:1px solid var(--c-line);
+  transition:background .35s var(--ease);
+}
+.news-date{
+  font-family:var(--f-en);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.12em;
+  color:var(--c-peach-dk);
+}
+.news-title{
+  font-size:16px;
+  letter-spacing:.05em;
+  color:var(--c-ink);
+  transition:color .35s var(--ease);
+}
+.news-arrow{
+  font-family:var(--f-en);
+  color:var(--c-mute);
+  transition:transform .35s var(--ease), color .35s var(--ease);
+}
+.news-item a:hover{background:var(--c-bg)}
+.news-item a:hover .news-title{color:var(--c-peach-dk)}
+.news-item a:hover .news-arrow{color:var(--c-peach-dk);transform:translateX(6px)}
+
+/* =========================================================
    CONTACT
    ========================================================= */
 .contact{background:var(--c-bg)}
@@ -1178,6 +1321,10 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .value-card:nth-child(4){grid-column:1 / 3}
   .value-card:nth-child(5){grid-column:3 / 5}
 }
+@media (max-width: 1080px){
+  .nav-desktop{display:none}
+  .hamburger{display:block}
+}
 @media (max-width: 960px){
   .nav-desktop{display:none}
   .hamburger{display:block}
@@ -1186,6 +1333,7 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .lead-quote{position:static}
   .mv-grid{grid-template-columns:1fr;gap:60px}
   .mv-divider{display:none}
+  .mvv-grid{grid-template-columns:1fr;max-width:640px;margin:0 auto}
   .activity-row,
   .activity-row.reverse{grid-template-columns:1fr;gap:24px}
   .activity-row.reverse .activity-img{order:0}
@@ -1212,6 +1360,9 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .activity-gallery .g-item:nth-child(3){grid-column:1 / -1}
   .section-title .en{font-size:36px}
   .future-stats{padding-top:30px}
+  .news-item a{grid-template-columns:1fr auto;gap:6px 16px;padding:20px 6px}
+  .news-date{grid-column:1 / -1}
+  .mvv-card{padding:34px 24px 30px}
   .footer-nav ul{grid-template-columns:1fr 1fr}
 
   .values-grid{grid-template-columns:1fr}
