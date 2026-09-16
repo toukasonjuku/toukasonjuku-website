@@ -366,11 +366,11 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
    SECTION COMMONS
    ========================================================= */
 .section{
-  padding:clamp(80px, 12vw, 160px) 0;
+  padding:clamp(64px, 8vw, 120px) 0;
   position:relative;
 }
 .section-head{
-  margin-bottom:clamp(40px,6vw,72px);
+  margin-bottom:clamp(32px,4vw,56px);
 }
 .section-head.center{text-align:center}
 .section-no{
@@ -410,9 +410,36 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   gap:inherit;align-items:inherit;
   color:inherit;
 }
-.title-link .en{transition:color .35s var(--ease)}
+.title-link{align-self:flex-start}
+.section-title.center .title-link{align-self:center}
+.title-link .en{
+  display:inline-flex;align-items:center;gap:.35em;
+  transition:color .35s var(--ease);
+}
+/* 見出しの右に丸い矢印ボタンを付け、押せることが分かるようにする */
+.title-link .en::after{
+  content:"→";
+  flex:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:clamp(36px, 3.4vw, 50px);height:clamp(36px, 3.4vw, 50px);
+  border:1px solid var(--c-peach);
+  border-radius:50%;
+  font-family:var(--f-en);
+  font-size:clamp(16px, 1.5vw, 22px);
+  font-weight:500;
+  line-height:1;
+  color:var(--c-peach-dk);
+  transition:background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease), border-color .35s var(--ease);
+}
 .title-link:hover .en{color:var(--c-peach-dk)}
+.title-link:hover .en::after{
+  background:var(--c-peach-dk);border-color:var(--c-peach-dk);
+  color:var(--c-bg);
+  transform:translateX(6px);
+}
+.future-title .title-link .en::after{color:var(--c-peach);border-color:var(--c-peach)}
 .future-title .title-link:hover .en{color:var(--c-peach)}
+.future-title .title-link:hover .en::after{background:var(--c-peach);color:var(--c-deep)}
 
 /* 「詳しく見る →」 */
 .more-link-wrap{
@@ -591,18 +618,17 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 
 /* ---- 理念の図解ブロック ---- */
 .phil-blocks{
-  margin-top:clamp(60px, 9vw, 110px);
+  margin-top:clamp(48px, 6vw, 80px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(32px, 4vw, 64px);
+}
+/* 2つの図解を横並びにし、それぞれ図解の下に本文を置く */
+.phil-block{
   display:flex;
   flex-direction:column;
-  gap:clamp(50px, 8vw, 90px);
+  gap:clamp(22px, 2.4vw, 32px);
 }
-.phil-block{
-  display:grid;
-  grid-template-columns:1.05fr 1fr;
-  gap:clamp(30px, 5vw, 70px);
-  align-items:center;
-}
-.phil-block.reverse .phil-img{order:2}
 .phil-img{
   border:1px solid var(--c-line);
   background:#fff;
@@ -629,9 +655,7 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 }
 .phil-text p:last-child{margin-bottom:0}
 @media (max-width:960px){
-  .phil-block,
-  .phil-block.reverse{grid-template-columns:1fr;gap:26px}
-  .phil-block.reverse .phil-img{order:0}
+  .phil-blocks{grid-template-columns:1fr}
 }
 
 /* =========================================================
