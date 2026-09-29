@@ -14,6 +14,16 @@
 
 ---
 
+### 2026-09-29 理念ページ(/philosophy)を作成（関連タスク: docs/tasks.md「理念ページ(/philosophy)作成」）
+- 内容: `docs/prompts/detail-page-1-philosophy.md` に沿って `src/pages/philosophy/index.html` を新規作成。見出し帯（パンくず＋Philosophy／桃下村塾の理念＋リード1文）→ 理念の本文（トップ `#about` の本文・ミーティング写真・図解2枚）→ `01 Origin`（`id="origin"`、トップ `#origin` の引用＋本文3段落）→ `02 MVV`（`id="mvv"`、統合前の Mission/Vision 全文 = `git show cbcbc2d^:src/pages/index.html` から復元）→ Values（5つのバリューの全文カード）→ 末尾の導線（活動内容・実績・お問い合わせ）という構成。文章はすべて現行サイトからの移設で、新しい事実・文章は書いていないため `[要確認]` はなし。`.value-card` は `is-link` を付けず、ホバーで浮き上がらないようにしている。
+  - 見出しの重複を解消: 当初はプロンプトの表どおり「01 理念」の見出しを置いたが、実画面で見出し帯の直下に同じ「Philosophy／桃下村塾の理念」が2回・リード文も2回並んだため、01の見出しと本文側の重複した1文（見出し帯のリードと同一）を外し、Origin=01・MVV=02 に番号を振り直した
+  - `src/style.css` への追加は2点のみ。(1) 詳細ページは先頭が明るい見出し帯なので、最上部でもヘッダーの文字が読めるよう `body:has(.page-hero)` でスクロール時と同じ白背景の状態から始める（従来は白文字が白背景に重なって見えない状態だった）。(2) 濃い背景の 02 MVV 用に見出しの文字色だけ明るくする2行。見出し帯本体（`.page-hero` / `.breadcrumb` / `.page-title` / `.page-lead`）と `section[id]{scroll-margin-top:110px}`、末尾導線の `.more-link-wrap.page-links` は、同時刻に並行セッションが `src/style.css` に入れたものをそのまま使った
+- コミット: 本コミット
+- 確認: `node build.js` 成功（5ページ）。ヘッドレスChrome＋CDPで幅1920/1280/390pxを確認 — 横スクロールなし（`documentElement.scrollWidth` が `innerWidth` と一致）、画像の読み込み失敗0件、コンソールのエラー・警告0件、ヘッダーの「Philosophy」に `.is-current` が付き桃色の下線が出ること、最上部でもヘッダーのロゴ・メニューが読めること、02 MVV の見出しが濃い背景の上で白く出ること、バリュー5枚・図解2枚が揃っていることを確認。`/philosophy/#origin` `/philosophy/#mvv` を直接開くと見出しがヘッダーの下に入らないこと（`#origin` はセクション上端が画面上から110px）も確認。トップページ内の内部リンクをHTTPで一括確認し、`/philosophy/` `/activities/` `/achievements/` `/news/` が200になること（`/future/` のみ未作成で404）を確認
+- 次にやること: りんのレビュー。並行セッションが未コミットで残した `src/pages/activities/` `src/pages/achievements/` `src/pages/news/` の扱いを決める（このコミットには含めていない）
+
+---
+
 ### 2026-09-29 詳細ページの実装プロンプトをページごとに5枚へ分割（関連タスク: docs/tasks.md 理念/活動内容/実績/展望/お知らせ の各ページ作成）
 - 内容: りんの指示で、1枚にまとまっていた `docs/prompts/detail-pages-implementation.md` をページ単位に分割。`detail-page-1-philosophy.md` / `-2-activities.md` / `-3-achievements.md` / `-4-future.md` / `-5-news.md` を作成し、それぞれに共通ルール（前提・最初に読むもの・metaブロック・見出し帯・事実の扱い・やらないこと・確認項目・終わったらの手順）を含めて、1枚だけで作業できるようにした。5ページ共通の部品（`.page-hero` とアンカーの位置ずれ対策）は1枚目の理念ページで作る旨を明記し、2枚目以降は「philosophyの部品を使い回す・CSSは追加しない」に差し替え。ページ固有の確認項目（写真5枚の表示、カード5枚と横スワイプ、数字の配色、準備中の文面）も各ファイルに追加。元の`detail-pages-implementation.md`は索引（5枚へのリンク表と進め方・前提）に書き換え、`docs/tasks.md`の各行の参照先も個別ファイルに更新
 - コミット: 本コミット

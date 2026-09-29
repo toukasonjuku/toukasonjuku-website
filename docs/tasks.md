@@ -3,7 +3,7 @@
 **タスクの正は [Notion「桃下村塾」データベース内プロジェクトページ](https://app.notion.com/p/3c0edf84e39e81149387d451475ce129)**。
 2026-08-26以降、Notion MCP（`mcp__claude_ai_Notion__*`）が接続済みで、AIが直接読み書きする。このファイルはClaude Codeが参照しやすいようにNotionの内容をローカルへミラーしたもの。**齟齬があればNotionを優先する。**
 
-最終反映日: 2026-09-29（詳細ページ5枚の実装プロンプトを作成・ページごとに分割）
+最終反映日: 2026-09-29（理念ページ /philosophy を実装、レビュー待ち）
 
 ---
 
@@ -46,7 +46,7 @@
 |---|---|---|
 | 共通コンポーネント設計(グローバルナビ・フッター) | 進行中 | `src/partials/`(head/header/footer)+`build.js`で実装済み。ヘッダーナビの新URL対応は未着手 |
 | トップページ(index)再構成 | 進行中 | 2026-09-17、手書き案に基づき構成確定（`content-plan.md`「5. トップページ構成」）・実装済み、りんのレビュー待ち。`[要確認]`: お知らせ記事3件 |
-| 理念ページ(/philosophy)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-page-1-philosophy.md`。Origin・MVVはこのページ内のセクション（#origin/#mvv）にすることで確定。5ページ共通の部品（見出し帯）もこのページで作るため最初に実施 |
+| 理念ページ(/philosophy)作成 | 進行中 | 2026-09-29、`src/pages/philosophy/index.html` を実装しローカル確認済み、りんのレビュー待ち。Origin・MVVはこのページ内のセクション（#origin/#mvv）。`[要確認]`なし（全文が現行サイトからの移設） |
 | 活動内容ページ(/activities)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-page-2-activities.md` |
 | 実績ページ(/achievements)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-page-3-achievements.md` |
 | 展望ページ(/future)作成 | 未着手 | 2026-09-17、URLを`/vision`から`/future`へ改名。2026-09-29、実装プロンプト`docs/prompts/detail-page-4-future.md` |

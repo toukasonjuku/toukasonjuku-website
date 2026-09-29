@@ -449,6 +449,8 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   text-align:right;
 }
 .more-link-wrap.left{text-align:left}
+/* 複数の導線リンクを1行に並べる（/news/ 等） */
+.more-link-wrap.multi{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(20px, 3vw, 44px)}
 .more-link{
   display:inline-flex;align-items:center;gap:14px;
   font-family:var(--f-jp);
@@ -467,6 +469,23 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 }
 .more-link:hover{color:var(--c-peach-dk);border-color:var(--c-peach-dk)}
 .more-link:hover .more-arrow{transform:translateX(6px)}
+/* 詳細ページ末尾の複数導線（横1列・狭い画面では折り返す） */
+.more-link-wrap.page-links{
+  display:flex;flex-wrap:wrap;
+  gap:18px clamp(24px, 4vw, 48px);
+  justify-content:flex-end;
+}
+/* 本文が未確定の箇所に置く [要確認] のメモ */
+.page-note{
+  position:relative;z-index:2;
+  margin-top:clamp(32px, 4vw, 48px);
+  font-family:var(--f-sans);
+  font-size:14px;
+  letter-spacing:.06em;
+  color:var(--c-mute);
+  border-left:2px solid var(--c-peach);
+  padding:4px 0 4px 16px;
+}
 .more-link.light{color:var(--c-bg);border-color:var(--c-peach)}
 .more-link.light .more-arrow{color:var(--c-peach)}
 .more-link.light:hover{color:var(--c-peach-lt)}
@@ -474,6 +493,86 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 /* Reveal on scroll */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease), transform 1s var(--ease)}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+/* 詳細ページのアンカー（/philosophy/#origin 等）で、固定ヘッダーに見出しが隠れないようにする */
+section[id]{scroll-margin-top:110px}
+
+/* =========================================================
+   PAGE HERO（詳細ページ共通の見出し帯・写真なし）
+   ========================================================= */
+.page-hero{
+  position:relative;
+  overflow:hidden;
+  background:var(--c-bg);
+  padding:clamp(140px, 16vw, 200px) 0 clamp(48px, 6vw, 72px);
+}
+.page-hero .container{position:relative;z-index:2}
+.breadcrumb{
+  display:flex;align-items:center;flex-wrap:wrap;gap:.6em;
+  font-family:var(--f-jp);
+  font-size:13px;
+  letter-spacing:.12em;
+  color:var(--c-mute);
+  margin-bottom:clamp(20px, 3vw, 32px);
+}
+.breadcrumb a{color:var(--c-mute)}
+.breadcrumb a:hover{color:var(--c-peach-dk)}
+.breadcrumb .bc-sep{color:var(--c-line)}
+.breadcrumb [aria-current="page"]{color:var(--c-ink-soft)}
+.page-title{
+  font-family:var(--f-jp);
+  font-weight:700;
+  display:flex;flex-direction:column;gap:12px;
+  line-height:1.2;
+}
+.page-title .en{
+  font-family:var(--f-en);
+  font-weight:700;
+  font-size:clamp(42px, 5.8vw, 68px);
+  letter-spacing:.03em;
+  color:var(--c-deep);
+}
+.page-title .jp{
+  font-size:15px;
+  letter-spacing:.4em;
+  color:var(--c-ink-soft);
+  font-weight:600;
+}
+.page-lead{
+  margin-top:clamp(24px, 3vw, 36px);
+  max-width:46em;
+  font-size:17px;
+  line-height:2;
+  letter-spacing:.06em;
+  color:var(--c-ink-soft);
+}
+
+/* 詳細ページは先頭が明るい見出し帯のため、最上部でもヘッダーの文字が読めるよう、
+   スクロール時と同じ白背景の状態から始める（header.html にクラスを足さずに済むよう、
+   ページ側の .page-hero の有無で判定する） */
+body:has(.page-hero) .site-header{
+  background:linear-gradient(180deg,
+    rgba(255,255,255,.98) 0%,
+    rgba(255,255,255,.95) 48%,
+    rgba(255,255,255,.55) 80%,
+    rgba(255,255,255,0) 100%);
+  padding:14px 0 30px;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 50%, transparent 100%);
+  mask-image:linear-gradient(180deg, #000 0%, #000 50%, transparent 100%);
+}
+body:has(.page-hero) .brand{color:var(--c-ink)}
+body:has(.page-hero) .brand-logo{
+  width:42px;height:42px;
+  filter:drop-shadow(0 1px 3px rgba(0,0,0,.15));
+}
+body:has(.page-hero) .nav-desktop a{color:var(--c-ink)}
+body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
+
+/* 理念ページの 03 MVV は濃い背景の上に見出しを置くため、見出しの文字色だけ明るくする */
+.mission-vision .section-title .en{color:#fff}
+.mission-vision .section-title .jp{color:var(--c-peach-lt)}
 
 /* =========================================================
    AI DECORATIONS (subtle, navy/silver/gray)
@@ -1153,6 +1252,17 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
    NEWS
    ========================================================= */
 .news{background:var(--c-bg-soft)}
+/* 記事がまだない状態の案内文 */
+.news-empty{
+  text-align:center;
+  font-size:17px;
+  line-height:2.1;
+  letter-spacing:.06em;
+  color:var(--c-ink-soft);
+  padding:clamp(24px, 5vw, 56px) 0;
+  border-top:1px solid var(--c-line);
+  border-bottom:1px solid var(--c-line);
+}
 .news-list{
   list-style:none;
   border-top:1px solid var(--c-line);
@@ -1388,11 +1498,13 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
 /* 広い画面（外部モニター等）では本文を一回り大きくして読みやすくする */
 @media (min-width: 1440px){
   .section-title .jp,
+  .page-title .jp,
   .future-title .jp{font-size:17px}
   .about-text p,
   .phil-text p,
   .origin-text p,
   .activity-text p{font-size:17px}
+  .page-lead{font-size:19px}
   .ach-text{font-size:15.5px}
   .future-text{font-size:18px}
   .contact-lead{font-size:19px}
@@ -1436,7 +1548,8 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   .sp-br{display:inline}
   .activity-gallery{grid-template-columns:1fr 1fr}
   .activity-gallery .g-item:nth-child(3){grid-column:1 / -1}
-  .section-title .en{font-size:36px}
+  .section-title .en,
+  .page-title .en{font-size:36px}
   .future-stats{padding-top:30px}
   .news-item a{grid-template-columns:1fr auto;gap:6px 16px;padding:20px 6px}
   .news-date{grid-column:1 / -1}
