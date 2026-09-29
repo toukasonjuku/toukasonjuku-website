@@ -14,6 +14,19 @@
 
 ---
 
+### 2026-09-30 展望ページ(/future)を作成（関連タスク: docs/tasks.md「展望ページ(/future)作成」）
+- 内容: `docs/prompts/detail-page-6-future.md` に沿って `src/pages/future/index.html` を新規作成。見出し帯（パンくず＋Future／今後の展望＋リード1文）→ 展望の本文（トップ `#future` の `future-lead` と `future-text` をそのまま）＋数字3つ → `[要確認]` の1行と末尾の導線（桃下村塾の理念・お知らせ・お問い合わせ）という構成。文章はすべて現行サイトからの移設で、新しい事実は書いていない
+  - 数字3つの扱い: プロンプトの2案のうち**暗い背景の帯にして元の配色のまま使う**方を選んだ。トップの Future セクションと同じ `.future` / `.future-bg`（`/images/hero.jpg`）/ `.future-overlay` / `.future-stats` / `.stat` をそのまま流用しており、**CSSの追加・変更は一切していない**（明るい背景に載せ替える案だと `.stat-num` `.stat-unit` `.stat-label` の3つの文字色を上書きする必要があり、トップとの見た目の連続性も切れるため）。見出し帯は明るい・本文の帯は暗い、の2段構成になる
+  - `[要確認]` と末尾の導線は、暗い帯の後ろに明るいセクションを置いてそこに入れた（`.page-note` と `.more-link-wrap.page-links` はどちらも明るい背景用の配色のため）
+  - 見出し帯の直下にセクション見出しは置いていない。ページ名が2回並ぶのを避けるためで、`/philosophy/` `/origin/` `/mvv/` と同じ扱い
+  - `src/style.css` と `src/partials/` は変更なし。作業の途中で `.page-links` を自分で追加しかけたが、並行セッションが入れた `.more-link-wrap.page-links` と `.page-note` が既にあったため取り消し、既存クラスをそのまま使った
+- コミット: 本コミット
+- 確認: `node build.js` 成功（8ページ）。ローカルサーバー（`python3 -m http.server`）＋ヘッドレスChromeで確認 — 幅1920/1280/390pxで `documentElement.scrollWidth` が `clientWidth` と一致（横スクロールなし）、ヘッダーの「Future」に `.is-current` が付いて桃色の下線が出ること、数字3つが暗い帯の上で読めること（390pxでは1カラムに折り返す）、`[要確認]` の1行と末尾の導線3つが表示されること、ページ由来のコンソールエラー・404が0件であること、リンク先の `/philosophy/` `/news/` `/`(#contact) がすべて存在することを確認。1280px全体と390pxの表示を目視確認。確認に使ったヘッドレスChromeのプロセスは終了済み
+  - 注意: ヘッドレスChromeの `--window-size=390` は macOS では実際のビューポートに反映されず、スクリーンショット上は右端が切れて見える。幅の判定は iframe を390pxに固定して `scrollWidth` を測る方法で行った（既存の `/philosophy/` でも同じ見え方になるため、このページ固有の問題ではない）
+- 次にやること: りんのレビュー。`[要確認: OCS・高校出張・スポンサー募集の内容]` の中身をもらう。残りは `/news/`（`detail-page-7-news.md`）。並行セッションが未コミットで残した `src/pages/activities/` `achievements/` `news/` の扱いは引き続き未決（このコミットには含めていない）
+
+---
+
 ### 2026-09-30 Origin・MVVを独立ページへ分離し、7ページ構成に変更（関連タスク: docs/tasks.md 理念/成り立ち/MVV の各ページ作成）
 - 内容: りんから「PhilosophyにはPhilosophyだけを書く。OriginとかValuesが混ざっている」との指示。**1ページには1つのテーマだけを書く**方針に変更し、詳細ページを5枚→**7枚**（`/philosophy/` `/origin/` `/mvv/` `/activities/` `/achievements/` `/future/` `/news/`）にした。ヘッダー・フッターのメニュー項目と1対1で対応する。MVVはメニュー項目が1つなので、Mission・Vision・5つのバリューを1ページにまとめた
   - ページ: `src/pages/philosophy/index.html` から Origin と MVV を切り出し、`src/pages/origin/index.html` と `src/pages/mvv/index.html` を新設。文章は移動しただけで、増減も書き換えもしていない。各ページの見出し帯直下にはセクション見出しを置かず（ページ名が2回並ぶため）、`/mvv/` のバリューの区切りにだけ `<h2 class="section-title">Values ／ 5つのバリュー` を残した。末尾の導線は3ページとも「残り2ページ＋お問い合わせ」
