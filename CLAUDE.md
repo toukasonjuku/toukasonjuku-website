@@ -20,7 +20,7 @@
 
 ## 今後の方針：マルチページ化
 
-**現在進行中の最重要タスク**: 1ページ構成 → マルチページ構成（`/` `/philosophy` `/activities` `/achievements` `/future` ＋お知らせページ）への構造変更。デザインのトンマナは維持したまま、情報構造だけを変える。理想完成 **2026-09-18**、最終期限 **2026-09-28**。
+**現在進行中の最重要タスク**: 1ページ構成 → マルチページ構成（`/` `/philosophy` `/origin` `/mvv` `/activities` `/achievements` `/future` `/news`）への構造変更。ヘッダー・フッターのメニュー項目と詳細ページを1対1で対応させ、**1ページには1つのテーマだけを書く**（2026-09-30確定）。デザインのトンマナは維持したまま、情報構造だけを変える。理想完成 **2026-09-18**、最終期限 **2026-09-28**。
 
 詳細な構成・目的・スケジュールは [`docs/content-plan.md`](docs/content-plan.md)、作業スコープは [`docs/tasks.md`](docs/tasks.md) を参照。この方針が実装に反映され次第、CLAUDE.mdの「ファイル構成」「セクション構成」節も実態に合わせて更新すること。
 
@@ -72,7 +72,7 @@ git push                 # push後、Renderが自動検知して1〜2分で本�
 
 `#top`（Hero）→ `#about`（01 Philosophy）→ `#origin`（02 Origin）→ `#mvv`（03 MVV）→ `#activities`（04）→ `#achievements`（05）→ `#future`（06）→ `#news`（07 お知らせ）→ `#contact`（08）
 
-仕様は `docs/content-plan.md`「5. トップページ構成」。ヘッダー/フッターのナビ（`src/partials/header.html` のPC・モバイル両方、`footer.html`）は各詳細ページ（`/philosophy/` 等）へのリンクなので、セクションやページを追加・削除したら3箇所とも更新すること。
+仕様は `docs/content-plan.md`「5. トップページ構成」。ヘッダー/フッターのナビ（`src/partials/header.html` のPC・モバイル両方、`footer.html`）は各詳細ページ（`/philosophy/` `/origin/` `/mvv/` 等）へのリンクなので、セクションやページを追加・削除したら3箇所とも更新すること。
 
 ## 技術スタック・重要な注意
 

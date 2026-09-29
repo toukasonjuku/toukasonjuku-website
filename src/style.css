@@ -570,10 +570,6 @@ body:has(.page-hero) .brand-logo{
 body:has(.page-hero) .nav-desktop a{color:var(--c-ink)}
 body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 
-/* 理念ページの 03 MVV は濃い背景の上に見出しを置くため、見出しの文字色だけ明るくする */
-.mission-vision .section-title .en{color:#fff}
-.mission-vision .section-title .jp{color:var(--c-peach-lt)}
-
 /* =========================================================
    AI DECORATIONS (subtle, navy/silver/gray)
    ========================================================= */

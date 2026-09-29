@@ -1,19 +1,19 @@
-# 実装プロンプト2/5: `/activities/` 活動内容
+# 実装プロンプト6/7: `/future/` 今後の展望
 
 作成: 2026-09-29 ／ 全体の索引: [`detail-pages-implementation.md`](detail-pages-implementation.md)
 
-このファイルは**活動内容ページ1枚分**の実装プロンプト。これだけを新しいセッションに貼れば作業できる。
+このファイルは**展望ページ1枚分**の実装プロンプト。これだけを新しいセッションに貼れば作業できる。
 
-2026-09-29にりんと決めた前提（5ページ共通）:
+りんと決めた前提（全ページ共通）:
 
-- **詳細ページは5枚**（`/philosophy/` `/activities/` `/achievements/` `/future/` `/news/`）。Origin と MVV は独立ページにせず `/philosophy/` の中のセクション（`#origin` / `#mvv`）にする。ヘッダー・フッター・トップページのリンクは今のままで正しい
+- **詳細ページは7枚**（`/philosophy/` `/origin/` `/mvv/` `/activities/` `/achievements/` `/future/` `/news/`）。ヘッダー・フッターのメニュー項目と1対1で対応する。**1ページには1つのテーマだけを書く**（2026-09-30にりんの指示で、Origin と MVV を `/philosophy/` のセクションから独立ページへ変更）
 - **記載内容は今のサイトの文章をそのまま使う**。まずはミニマムでよい。肉付けはこれから。新しい文章を創作しない
-- **トップページの本文は今回は変えない**（詳細ページと同じ文章が並ぶが、5ページそろってから短くする）
+- **トップページの本文は今回は変えない**（詳細ページと同じ文章が並ぶが、全ページそろってから短くする）
 - **各ページの先頭は、文字だけの見出し帯**（写真は敷かない）
 
 ---
 
-`src/pages/activities/index.html` を新規作成し、`/activities/` で開ける活動内容ページを作ってください。
+`src/pages/future/index.html` を新規作成し、`/future/` で開ける今後の展望ページを作ってください。
 
 ## 最初に読むもの
 1. `AGENTS.md` — 自律範囲・承認が必要な操作・git運用・Notion運用のルール
@@ -21,21 +21,21 @@
 3. `docs/content-plan.md` — 特に「ページ別コンテンツ構成」と「5. トップページ構成」
 4. `src/pages/index.html` — **文章の出典はここ**
 5. `src/style.css` — 使えるクラスとデザイントークンの確認
-6. 元のHTML: `git show 4613ac4:src/pages/index.html`（カード化する前のトップページ。写真と文章を交互に並べる `.activity-rows` と `.activity-gallery` がある）
+6. 元のHTML: `git show cbcbc2d^:src/pages/index.html`（数字3つの `.future-stats` がある。トップからはこの数字を削除済み）
 
-着手したら、Notionの「活動内容ページ(/activities)作成」タスクのステータスを `進行中` にし、`docs/tasks.md` にも反映する。
+着手したら、Notionの「展望ページ(/future)作成」タスクのステータスを `進行中` にし、`docs/tasks.md` にも反映する。
 
 ## 共通の作り
 
 ### ファイルの置き場所
-`src/pages/activities/index.html`。`build.js` がそのまま `dist/activities/index.html` を出力し、`/activities/` で開ける。`src/partials/`（ヘッダー・フッター・head）は**触らない**。
+`src/pages/future/index.html`。`build.js` がそのまま `dist/future/index.html` を出力し、`/future/` で開ける。`src/partials/`（ヘッダー・フッター・head）は**触らない**。
 
 ### 先頭の `<!--meta-->` ブロック（必須）
 ```html
 <!--meta
-title: 桃下村塾（とうかそんじゅく）｜ 活動内容
+title: 桃下村塾（とうかそんじゅく）｜ 今後の展望
 description: このページ固有の説明文。120字前後。他のページと同じ文言にしない
-canonical: https://www.momoshita.jp/activities/
+canonical: https://www.momoshita.jp/future/
 ogTitle: SNSシェア時のタイトル
 ogDescription: SNSシェア時の説明文
 -->
@@ -58,11 +58,11 @@ ogDescription: SNSシェア時の説明文
 
 | セクション | 中身 |
 |---|---|
-| 見出し帯 | Activities ／ 活動内容 |
-| 本文 | トップの3つ（ももした道場／定例会／イベント・コラボレーション）を、写真と文章を交互に並べる形で詳しく見せる。**元のHTMLは `git show 4613ac4:src/pages/index.html` にある**。`.activity-rows` / `.activity-row` / `.activity-gallery` のCSSは今も `style.css` に残っている |
-| 写真 | `activity-01.jpg` `activity-02.jpg` `ach-external.jpg` に加え、トップから外した `activity-03.jpg` `code.jpg` を `.activity-gallery` で使う |
-| 今後追加する項目 | `docs/content-plan.md` に「定例会／ももした道場ビジネス／ももした道場テック／遊びイベント／各役職紹介」とあるが、本文がまだない。**勝手に書かず**、ページ末尾に `[要確認: ももした道場ビジネス／テック、遊びイベント、各役職紹介の内容]` と1行入れる |
-| 末尾 | 実績（`/achievements/`）・展望（`/future/`）へのリンクと、お問い合わせ（`/#contact`）へのリンク。トップの `.more-link` を使い回す |
+| 見出し帯 | Future ／ 今後の展望 |
+| 本文 | トップの `future-lead`（2026年、数百人規模のホールイベントを岡山で開催する。）と `future-text` をそのまま |
+| 数字 | **トップから削除した数字3つをここに置く**（数百人／中期目標・ホールイベント、2回／週・ももした道場（月・水）、2025〜・設立から、これからへ）。元のHTMLは `git show cbcbc2d^:src/pages/index.html`、`.future-stats` / `.stat` のCSSは `style.css` に残っている。**このページは明るい背景なので、文字色だけ読める色（`--c-deep` / `--c-peach-dk` 等）に調整する**。暗い背景の帯にして元の配色のまま使ってもよい。どちらにしたか報告する |
+| 今後追加する項目 | `docs/content-plan.md` の「OCS／高校出張／スポンサーお願い」は本文がないため、ページ末尾に `[要確認: OCS・高校出張・スポンサー募集の内容]` と1行入れる |
+| 末尾 | 理念（`/philosophy/`）・お知らせ（`/news/`）へのリンクと、お問い合わせ（`/#contact`）へのリンク。トップの `.more-link` を使い回す |
 
 ## このページでやらないこと
 - `sitemap.xml` の更新（詳細ページのURLはRenderのビルド設定を切り替えるまで本番で404になるため、フェーズ3のSEO仕上げでまとめて行う）
@@ -73,18 +73,18 @@ ogDescription: SNSシェア時の説明文
 - `git push` / `main` へのマージ / Render設定変更（すべて承認必須）
 
 ## 確認項目
-1. `node build.js` が成功し、`dist/activities/index.html` ができる
+1. `node build.js` が成功し、`dist/future/index.html` ができる
 2. ローカルで表示確認する。サーバーはユーザーに起動してもらう（`python3 -m http.server 5173 -d dist`。バックグラウンドで動かすとメモリ不足で止められる）。ヘッドレスChromeで確認する場合は、**終わったらChromeのプロセスを必ず終了する**
 3. 幅1920px・1280px・390pxで、横スクロールが出ないこと、文字が小さすぎないこと
-4. ヘッダーのメニューで「Activities」の項目に桃色の下線が出ること（`.is-current`）
-5. トップページの「Activities」の見出しリンクと「詳しく見る →」から、このページに実際に飛べること（404が1つ減る）
-6. 写真5枚（`activity-01` `activity-02` `activity-03` `ach-external` `code`）がすべて表示されること
+4. ヘッダーのメニューで「Future」の項目に桃色の下線が出ること（`.is-current`）
+5. トップページの「Future」の見出しリンクと「詳しく見る →」から、このページに実際に飛べること（404が1つ減る）
+6. 数字3つが読める色で表示されること（元は暗い背景用の配色だった）
 7. ブラウザのコンソールにエラーが出ていないこと
 8. CSSを変更したら `src/partials/head.html` の `style.css?v=YYYYMMDD` を当日の日付に更新する
 
 ## 終わったら
 1. `docs/worklog.md` の先頭にエントリを追記（書式はファイル冒頭のテンプレート通り。確認した内容も書く）
 2. ローカルコミット（pushはしない）
-3. Notionの「活動内容ページ(/activities)作成」タスクと `docs/tasks.md` のステータスを更新（レビュー承認前は `完了` にしない）
+3. Notionの「展望ページ(/future)作成」タスクと `docs/tasks.md` のステータスを更新（レビュー承認前は `完了` にしない）
 4. チャットで報告する: 作ったURLとファイルパス／本文の要約／`[要確認]` の一覧／判断に迷った点
-5. りんのレビューを待ってから、次のページ（`/achievements/` 実績 = `detail-page-3-achievements.md`）に進む
+5. りんのレビューを待ってから、次のページ（`/news/` お知らせ = `detail-page-7-news.md`）に進む

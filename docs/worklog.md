@@ -14,6 +14,19 @@
 
 ---
 
+### 2026-09-30 Origin・MVVを独立ページへ分離し、7ページ構成に変更（関連タスク: docs/tasks.md 理念/成り立ち/MVV の各ページ作成）
+- 内容: りんから「PhilosophyにはPhilosophyだけを書く。OriginとかValuesが混ざっている」との指示。**1ページには1つのテーマだけを書く**方針に変更し、詳細ページを5枚→**7枚**（`/philosophy/` `/origin/` `/mvv/` `/activities/` `/achievements/` `/future/` `/news/`）にした。ヘッダー・フッターのメニュー項目と1対1で対応する。MVVはメニュー項目が1つなので、Mission・Vision・5つのバリューを1ページにまとめた
+  - ページ: `src/pages/philosophy/index.html` から Origin と MVV を切り出し、`src/pages/origin/index.html` と `src/pages/mvv/index.html` を新設。文章は移動しただけで、増減も書き換えもしていない。各ページの見出し帯直下にはセクション見出しを置かず（ページ名が2回並ぶため）、`/mvv/` のバリューの区切りにだけ `<h2 class="section-title">Values ／ 5つのバリュー` を残した。末尾の導線は3ページとも「残り2ページ＋お問い合わせ」
+  - リンク: `src/partials/header.html`（PC・モバイル）、`src/partials/footer.html`、`src/pages/index.html`（トップの見出しリンクと「詳しく見る」）の `/philosophy/#origin` → `/origin/`、`/philosophy/#mvv` → `/mvv/`
+  - CSS: 追加なし。`/philosophy/` 用に入れていた `.mission-vision .section-title` の色上書きは、濃い背景に見出しを置かなくなったため削除した
+  - プロンプト: `docs/prompts/` を7枚に再編。`detail-page-1-philosophy.md` を理念のみに書き換え、`detail-page-2-origin.md` と `detail-page-3-mvv.md` を新規作成、既存の activities/achievements/future/news を 4〜7 に番号付け直し（前提の「5枚」「Origin・MVVはセクション」の記述もすべて更新）。索引 `detail-pages-implementation.md` も7枚の表に書き換え
+  - ドキュメント: `docs/content-plan.md`（URL構成・ページ別コンテンツ構成・トップのリンク先）、`docs/tasks.md`（着手順とタスク一覧に `/origin` `/mvv` を追加）、`CLAUDE.md`（マルチページ化の方針）を7ページ構成に更新
+- コミット: 本コミット
+- 確認: `node build.js` 成功（7ページ）。ローカルサーバーで `/` `/philosophy/` `/origin/` `/mvv/` `/activities/` `/achievements/` `/news/` が200（`/future/` のみ未作成で404）。ヘッドレスChrome＋CDPで3ページ×幅1920/1280/390pxを確認 — `<h1>` が各ページ1つ、横スクロールなし、画像の読み込み失敗0件、コンソールのエラー0件、ヘッダーのメニューで Philosophy / Origin / MVV がそれぞれ `.is-current` になること、末尾の導線のリンク先が正しいこと。`/mvv/` は見出しの順序が h1→h2→h2→h2→h4 になるよう `.mv-headline` を h3→h2 に変更（見た目は変わらない）。3ページの1280px表示を目視確認
+- 次にやること: りんのレビュー。`/future/` は未作成（`detail-page-6-future.md`）。並行セッションが未コミットで残した `src/pages/activities/` `achievements/` `news/` の扱いは未決
+
+---
+
 ### 2026-09-29 理念ページ(/philosophy)を作成（関連タスク: docs/tasks.md「理念ページ(/philosophy)作成」）
 - 内容: `docs/prompts/detail-page-1-philosophy.md` に沿って `src/pages/philosophy/index.html` を新規作成。見出し帯（パンくず＋Philosophy／桃下村塾の理念＋リード1文）→ 理念の本文（トップ `#about` の本文・ミーティング写真・図解2枚）→ `01 Origin`（`id="origin"`、トップ `#origin` の引用＋本文3段落）→ `02 MVV`（`id="mvv"`、統合前の Mission/Vision 全文 = `git show cbcbc2d^:src/pages/index.html` から復元）→ Values（5つのバリューの全文カード）→ 末尾の導線（活動内容・実績・お問い合わせ）という構成。文章はすべて現行サイトからの移設で、新しい事実・文章は書いていないため `[要確認]` はなし。`.value-card` は `is-link` を付けず、ホバーで浮き上がらないようにしている。
   - 見出しの重複を解消: 当初はプロンプトの表どおり「01 理念」の見出しを置いたが、実画面で見出し帯の直下に同じ「Philosophy／桃下村塾の理念」が2回・リード文も2回並んだため、01の見出しと本文側の重複した1文（見出し帯のリードと同一）を外し、Origin=01・MVV=02 に番号を振り直した
