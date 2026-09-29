@@ -3,7 +3,7 @@
 **タスクの正は [Notion「桃下村塾」データベース内プロジェクトページ](https://app.notion.com/p/3c0edf84e39e81149387d451475ce129)**。
 2026-08-26以降、Notion MCP（`mcp__claude_ai_Notion__*`）が接続済みで、AIが直接読み書きする。このファイルはClaude Codeが参照しやすいようにNotionの内容をローカルへミラーしたもの。**齟齬があればNotionを優先する。**
 
-最終反映日: 2026-09-29（詳細ページ5枚の実装プロンプトを作成）
+最終反映日: 2026-09-29（詳細ページ5枚の実装プロンプトを作成・ページごとに分割）
 
 ---
 
@@ -46,12 +46,12 @@
 |---|---|---|
 | 共通コンポーネント設計(グローバルナビ・フッター) | 進行中 | `src/partials/`(head/header/footer)+`build.js`で実装済み。ヘッダーナビの新URL対応は未着手 |
 | トップページ(index)再構成 | 進行中 | 2026-09-17、手書き案に基づき構成確定（`content-plan.md`「5. トップページ構成」）・実装済み、りんのレビュー待ち。`[要確認]`: お知らせ記事3件 |
-| 理念ページ(/philosophy)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-pages-implementation.md`を作成。Origin・MVVはこのページ内のセクション（#origin/#mvv）にすることで確定 |
-| 活動内容ページ(/activities)作成 | 未着手 | 2026-09-29、実装プロンプト作成済み |
-| 実績ページ(/achievements)作成 | 未着手 | 2026-09-29、実装プロンプト作成済み |
-| 展望ページ(/future)作成 | 未着手 | 2026-09-17、URLを`/vision`から`/future`へ改名。2026-09-29、実装プロンプト作成済み |
+| 理念ページ(/philosophy)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-page-1-philosophy.md`。Origin・MVVはこのページ内のセクション（#origin/#mvv）にすることで確定。5ページ共通の部品（見出し帯）もこのページで作るため最初に実施 |
+| 活動内容ページ(/activities)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-page-2-activities.md` |
+| 実績ページ(/achievements)作成 | 未着手 | 2026-09-29、実装プロンプト`docs/prompts/detail-page-3-achievements.md` |
+| 展望ページ(/future)作成 | 未着手 | 2026-09-17、URLを`/vision`から`/future`へ改名。2026-09-29、実装プロンプト`docs/prompts/detail-page-4-future.md` |
 | Contactセクション(共通フッター)実装 | 未着手 | `footer.html`切り出し済み、内容は現行のまま |
-| お知らせページ新設 | 未着手 | 2026-09-08、設計方針を決定：個別記事ページ＋一覧はbuild.jsが自動生成（SEO記事単位最適化のため）。詳細は`content-plan.md`「4. 更新頻度によるページ設計方針」参照。実装（build.js拡張・テンプレート作成）は未着手。2026-09-29、まずは一覧ページだけ作り、記事システムは実際の記事が出てから別タスクにすることで確定 |
+| お知らせページ新設 | 未着手 | 2026-09-08、設計方針を決定：個別記事ページ＋一覧はbuild.jsが自動生成（SEO記事単位最適化のため）。詳細は`content-plan.md`「4. 更新頻度によるページ設計方針」参照。実装（build.js拡張・テンプレート作成）は未着手。2026-09-29、まずは一覧ページだけ作り、記事システムは実際の記事が出てから別タスクにすることで確定。実装プロンプト`docs/prompts/detail-page-5-news.md` |
 | 画像・写真素材の整理(各ページ用) | 未着手 | ページ別サブフォルダへの再編方針は決定済み（`content-plan.md`参照） |
 | sitemap.xml / SEO設定のマルチページ対応 | 未着手 | |
 | Render上での動作確認・デプロイ | 未着手 | ★`main`マージ前に必ずBuild Command/Publish Directory切替が必要（下記参照） |

@@ -1,0 +1,88 @@
+# 実装プロンプト3/5: `/achievements/` 実績
+
+作成: 2026-09-29 ／ 全体の索引: [`detail-pages-implementation.md`](detail-pages-implementation.md)
+
+このファイルは**実績ページ1枚分**の実装プロンプト。これだけを新しいセッションに貼れば作業できる。
+
+2026-09-29にりんと決めた前提（5ページ共通）:
+
+- **詳細ページは5枚**（`/philosophy/` `/activities/` `/achievements/` `/future/` `/news/`）。Origin と MVV は独立ページにせず `/philosophy/` の中のセクション（`#origin` / `#mvv`）にする。ヘッダー・フッター・トップページのリンクは今のままで正しい
+- **記載内容は今のサイトの文章をそのまま使う**。まずはミニマムでよい。肉付けはこれから。新しい文章を創作しない
+- **トップページの本文は今回は変えない**（詳細ページと同じ文章が並ぶが、5ページそろってから短くする）
+- **各ページの先頭は、文字だけの見出し帯**（写真は敷かない）
+
+---
+
+`src/pages/achievements/index.html` を新規作成し、`/achievements/` で開ける実績ページを作ってください。
+
+## 最初に読むもの
+1. `AGENTS.md` — 自律範囲・承認が必要な操作・git運用・Notion運用のルール
+2. `docs/content-authoring.md` — ページ執筆の手順と `<!--meta-->` の書式（**必読**）
+3. `docs/content-plan.md` — 特に「ページ別コンテンツ構成」と「5. トップページ構成」
+4. `src/pages/index.html` — **文章の出典はここ**
+5. `src/style.css` — 使えるクラスとデザイントークンの確認
+
+着手したら、Notionの「実績ページ(/achievements)作成」タスクのステータスを `進行中` にし、`docs/tasks.md` にも反映する。
+
+## 共通の作り
+
+### ファイルの置き場所
+`src/pages/achievements/index.html`。`build.js` がそのまま `dist/achievements/index.html` を出力し、`/achievements/` で開ける。`src/partials/`（ヘッダー・フッター・head）は**触らない**。
+
+### 先頭の `<!--meta-->` ブロック（必須）
+```html
+<!--meta
+title: 桃下村塾（とうかそんじゅく）｜ 実績
+description: このページ固有の説明文。120字前後。他のページと同じ文言にしない
+canonical: https://www.momoshita.jp/achievements/
+ogTitle: SNSシェア時のタイトル
+ogDescription: SNSシェア時の説明文
+-->
+```
+`canonical` は末尾スラッシュ付き。`title` は「桃下村塾（とうかそんじゅく）｜ ページ名」で統一する。
+
+### ページ先頭の見出し帯（`/philosophy/` で作った共通部品を使う）
+`src/pages/philosophy/index.html` の先頭にある `.page-hero` をそのまま真似る。パンくずの現在地（`aria-current="page"` の文字）、`.page-title` の英語・日本語、`.page-lead` の一文だけを、このページのものに差し替える。**CSSは既にあるので追加しない**（必要になったら、なぜ必要かを報告してから）。
+
+### 見出し・本文のルール
+- ページ内の大見出しは `<h1>`（見出し帯）1つだけ。以降のセクションは `<h2 class="section-title">`（英語＋日本語）、その中の小見出しは `<h3>`
+- トップページと同じ `section` / `container` / `reveal` / `deco-graph` の組み立てを使う。既存クラス（`.phil-block` `.ach-grid` `.ach-card` `.value-card` `.mv-grid` など）を再利用し、**新しいCSSは必要最小限**にする
+- `.ach-card` / `.value-card` はリンクではないので `is-link` を付けない（ホバーで浮き上がらせない）
+- 画像は今のまま `/images/○○.jpg` の絶対パスで参照する。`images/` のページ別サブフォルダ再編は**今回やらない**（別タスク）
+
+### 事実の扱い
+`src/pages/index.html` と `docs/content-plan.md` に書かれていない事実（数字・固有名詞・日程・金額・人名）は**書かない**。必要な場所には `[要確認: 何を確認したいか]` と本文に明記し、報告時に一覧で挙げる。
+
+## このページの中身
+
+| セクション | 中身 |
+|---|---|
+| 見出し帯 | Achievements ／ これまでの実績 |
+| 本文 | トップの5件（協生PJ／Tech Study Lab／サークルコラボ／高校生への授業／外部イベント）を `.ach-grid` / `.ach-card` でそのまま。文章もトップと同じ。「高校生への授業」は写真がないので `no-img` のまま |
+| 今後追加する項目 | `docs/content-plan.md` の「協生農法／小寺先生ワークショップ／IT企業交流会」は本文がないため、ページ末尾に `[要確認: 各実績の詳細（実施時期・人数・内容）／協生農法・小寺先生ワークショップ・IT企業交流会の扱い]` と1行入れる |
+| 末尾 | 活動内容（`/activities/`）・お知らせ（`/news/`）へのリンクと、お問い合わせ（`/#contact`）へのリンク。トップの `.more-link` を使い回す |
+
+## このページでやらないこと
+- `sitemap.xml` の更新（詳細ページのURLはRenderのビルド設定を切り替えるまで本番で404になるため、フェーズ3のSEO仕上げでまとめて行う）
+- `images/` のページ別サブフォルダ再編
+- トップページの本文を短くすること
+- カード一覧を自動で横に流すアニメーション（デザイン改良フェーズ）
+- 他の詳細ページを一緒に作ること（1ページずつレビューを受ける）
+- `git push` / `main` へのマージ / Render設定変更（すべて承認必須）
+
+## 確認項目
+1. `node build.js` が成功し、`dist/achievements/index.html` ができる
+2. ローカルで表示確認する。サーバーはユーザーに起動してもらう（`python3 -m http.server 5173 -d dist`。バックグラウンドで動かすとメモリ不足で止められる）。ヘッドレスChromeで確認する場合は、**終わったらChromeのプロセスを必ず終了する**
+3. 幅1920px・1280px・390pxで、横スクロールが出ないこと、文字が小さすぎないこと
+4. ヘッダーのメニューで「Achievements」の項目に桃色の下線が出ること（`.is-current`）
+5. トップページの「Achievements」の見出しリンクと「詳しく見る →」から、このページに実際に飛べること（404が1つ減る）
+6. カードが5枚とも表示され、スマホ幅では横スワイプになること（`.ach-grid` の既存の動き）
+7. ブラウザのコンソールにエラーが出ていないこと
+8. CSSを変更したら `src/partials/head.html` の `style.css?v=YYYYMMDD` を当日の日付に更新する
+
+## 終わったら
+1. `docs/worklog.md` の先頭にエントリを追記（書式はファイル冒頭のテンプレート通り。確認した内容も書く）
+2. ローカルコミット（pushはしない）
+3. Notionの「実績ページ(/achievements)作成」タスクと `docs/tasks.md` のステータスを更新（レビュー承認前は `完了` にしない）
+4. チャットで報告する: 作ったURLとファイルパス／本文の要約／`[要確認]` の一覧／判断に迷った点
+5. りんのレビューを待ってから、次のページ（`/future/` 展望 = `detail-page-4-future.md`）に進む
