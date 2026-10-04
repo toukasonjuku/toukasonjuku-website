@@ -46,7 +46,7 @@ ogDescription: SNSシェア時の説明文
 `canonical` は末尾スラッシュ付き。`title` は「桃下村塾（とうかそんじゅく）｜ ページ名」で統一する。
 
 ### ページ先頭の見出し帯（`/philosophy/` で作った共通部品を使う）
-`src/pages/philosophy/index.html` の先頭にある `.page-hero` をそのまま真似る。パンくずの現在地（`aria-current="page"` の文字）、`.page-title` の英語・日本語、`.page-lead` の一文だけを、このページのものに差し替える。**CSSは既にあるので追加しない**（必要になったら、なぜ必要かを報告してから）。
+`src/pages/philosophy/index.html` の先頭にある `.page-hero` をそのまま真似る。パンくずの現在地（`aria-current="page"` の文字）と `.page-title` の英語・日本語だけを、このページのものに差し替える。**`.page-lead`（見出し帯のリード文）は置かない**（2026-10-05 りんの指示で全ページそろえた。言いたい一文は本文の先頭に置く）。**CSSは既にあるので追加しない**（必要になったら、なぜ必要かを報告してから）。
 
 ### 見出し・本文のルール
 - ページ内の大見出しは `<h1>`（見出し帯）1つだけ。**見出し帯の直後の Mission/Vision にはセクション見出しを置かない**（同じページ名が2回並ぶため）。バリューの区切りだけ `<h2 class="section-title">`（Values ／ 5つのバリュー）を置く
@@ -63,7 +63,7 @@ ogDescription: SNSシェア時の説明文
 
 | セクション | 中身 |
 |---|---|
-| 見出し帯 | MVV ／ 桃下村塾が大切にすること。リードは「AIやビジネスは目的ではなく、社会に価値を生み出すための手段である。」 |
+| 見出し帯 | MVV ／ 桃下村塾が大切にすること。**`.page-lead` は置かない** |
 | Mission / Vision | 濃い背景の `.mission-vision` ＋ `.mv-grid`。**トップの要約版ではなく、統合前の全文**（`git show cbcbc2d^:src/pages/index.html`）。Mission「岡山から、社会を変革する人材を育てる。」、Vision「学生がAIとビジネスを武器に、地域と社会に新しい価値を生み出し続ける未来をつくる。」＋それぞれの本文 |
 | Values | `<h2 class="section-title">` で Values ／ 5つのバリュー。`.values-grid` に `.value-card` を5枚（01〜05、サブコピーと説明文つき）。回路基板の装飾（`.deco-circuit-full`）と側面ラベル（`.deco-binary`）も元のまま使う |
 | 末尾 | 理念（`/philosophy/`）・成り立ち（`/origin/`）・お問い合わせ（`/#contact`）へのリンク。`.more-link-wrap.page-links` ＋ `.more-link` を使う |
