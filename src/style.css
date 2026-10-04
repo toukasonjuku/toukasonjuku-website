@@ -802,33 +802,11 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 /* =========================================================
    MISSION / VISION
    ========================================================= */
-.mission-vision{
-  background:var(--c-deep);
-  color:#f6efed;
+/* Values と同じ白＋方眼背景で、Mission / Vision / Values を縦に1つずつ並べる */
+.mission-vision{background:var(--c-bg)}
+.mv-block{
   position:relative;
-  overflow:hidden;
-}
-.mv-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(232,154,165,.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(139,26,43,.25) 0%, transparent 55%);
-  pointer-events:none;
-}
-.mv-grid{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  gap:clamp(40px,6vw,80px);
-  align-items:start;
-}
-.mv-block .mv-label{
-  font-family:var(--f-en);
-  font-size:13px;
-  letter-spacing:.5em;
-  color:var(--c-peach);
-  display:block;
-  margin-bottom:24px;
+  max-width:880px;
 }
 .mv-headline{
   font-family:var(--f-jp);
@@ -837,18 +815,13 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   line-height:1.6;
   letter-spacing:.05em;
   margin-bottom:30px;
-  color:#fff;
+  color:var(--c-deep);
 }
 .mv-block p{
-  font-size:15px;
+  font-size:15.5px;
   line-height:2;
-  color:#d8cfcb;
+  color:var(--c-ink-soft);
   letter-spacing:.04em;
-}
-.mv-divider{
-  width:1px;
-  background:linear-gradient(180deg, transparent, var(--c-peach), transparent);
-  align-self:stretch;
 }
 
 /* =========================================================
@@ -1474,8 +1447,6 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   .about-grid{grid-template-columns:1fr;gap:50px}
   .origin-body{grid-template-columns:1fr;gap:30px}
   .lead-quote{position:static}
-  .mv-grid{grid-template-columns:1fr;gap:60px}
-  .mv-divider{display:none}
   .mvv-grid{grid-template-columns:1fr;max-width:640px;margin:0 auto}
   .activity-row,
   .activity-row.reverse{grid-template-columns:1fr;gap:24px}

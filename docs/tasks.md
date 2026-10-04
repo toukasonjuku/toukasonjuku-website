@@ -53,7 +53,7 @@
 | MVVページ(/mvv)作成 | 進行中 | 2026-09-30新規。`/philosophy/#mvv` から独立ページへ。Mission・Vision・5つのバリューを1ページに。`src/pages/mvv/index.html`、実装プロンプト`docs/prompts/detail-page-3-mvv.md`。りんのレビュー待ち。`[要確認]`なし |
 | 活動内容ページ(/activities)作成 | 未着手 | 実装プロンプト`docs/prompts/detail-page-4-activities.md`。並行セッションによる未レビューの下書きが`src/pages/activities/`にある（未コミット） |
 | 実績ページ(/achievements)作成 | 未着手 | 実装プロンプト`docs/prompts/detail-page-5-achievements.md`。並行セッションによる未レビューの下書きが`src/pages/achievements/`にある（未コミット） |
-| 展望ページ(/future)作成 | 進行中 | 2026-09-17、URLを`/vision`から`/future`へ改名。実装プロンプト`docs/prompts/detail-page-6-future.md`。2026-09-30実装・りんのレビュー待ち。`[要確認]`: OCS・高校出張・スポンサー募集の内容 |
+| 展望ページ(/future)作成 | 進行中 | 2026-09-17、URLを`/vision`から`/future`へ改名。実装プロンプト`docs/prompts/detail-page-6-future.md`。2026-09-30実装・りんのレビュー待ち。`[要確認]`: OCS・高校出張・スポンサー募集の内容。**2026-10-05、内容（数字欄の要否を含む）は今後りんが村長と相談して決めるため保留。それまで手を入れない** |
 | Contactセクション(共通フッター)実装 | 未着手 | `footer.html`切り出し済み、内容は現行のまま |
 | お知らせページ新設 | 未着手 | 2026-09-08、設計方針を決定：個別記事ページ＋一覧はbuild.jsが自動生成（SEO記事単位最適化のため）。詳細は`content-plan.md`「4. 更新頻度によるページ設計方針」参照。実装（build.js拡張・テンプレート作成）は未着手。2026-09-29、まずは一覧ページだけ作り、記事システムは実際の記事が出てから別タスクにすることで確定。実装プロンプト`docs/prompts/detail-page-7-news.md`。並行セッションによる未レビューの下書きが`src/pages/news/`にある（未コミット） |
 | 画像・写真素材の整理(各ページ用) | 未着手 | ページ別サブフォルダへの再編方針は決定済み（`content-plan.md`参照） |
