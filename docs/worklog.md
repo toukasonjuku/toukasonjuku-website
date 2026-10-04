@@ -14,6 +14,14 @@
 
 ---
 
+### 2026-10-05 成り立ちページの見出し帯のリード文を削除（関連タスク: docs/tasks.md「成り立ちページ(/origin)作成」）
+- 内容: りんのレビュー「『桃下村塾は、AIとビジネスを軸に、学生が実社会に近い形で挑戦できる場として構想された。』が書かれているところには何も書かない」を反映。`src/pages/origin/index.html` の見出し帯から `.page-lead` を要素ごと削除した（空の `<p>` を残すと余白が出るため）。同じ一文は本文2段落目の冒頭にそのまま残っているので、文章の増減はない。`/philosophy/`（2026-10-05）と同じ扱いに揃った。実装プロンプト `docs/prompts/detail-page-2-origin.md` も、見出し帯の説明と「このページの中身」の表を「`.page-lead` は置かない」に更新
+- コミット: 本コミット
+- 確認: `node build.js` 成功（8ページ）。ビルド結果で `page-lead` が `/origin/` `/philosophy/` では0件、`/mvv/` `/activities/` `/achievements/` `/future/` `/news/` では1件ずつ残っていることを確認。`dist/origin/index.html` の見出し帯がパンくず＋`<h1>`（Origin／桃下村塾の成り立ち）だけになり、その直後が本文の `.lead-quote` から始まることを確認。CSSは変更していないため `style.css?v=` は更新していない
+- 次にやること: りんのレビュー。`/mvv/` `/activities/` `/achievements/` `/future/` `/news/` の見出し帯のリード文も同じように外すか確認する（現状は残っている）
+
+---
+
 ### 2026-09-30 展望ページ(/future)を作成（関連タスク: docs/tasks.md「展望ページ(/future)作成」）
 - 内容: `docs/prompts/detail-page-6-future.md` に沿って `src/pages/future/index.html` を新規作成。見出し帯（パンくず＋Future／今後の展望＋リード1文）→ 展望の本文（トップ `#future` の `future-lead` と `future-text` をそのまま）＋数字3つ → `[要確認]` の1行と末尾の導線（桃下村塾の理念・お知らせ・お問い合わせ）という構成。文章はすべて現行サイトからの移設で、新しい事実は書いていない
   - 数字3つの扱い: プロンプトの2案のうち**暗い背景の帯にして元の配色のまま使う**方を選んだ。トップの Future セクションと同じ `.future` / `.future-bg`（`/images/hero.jpg`）/ `.future-overlay` / `.future-stats` / `.stat` をそのまま流用しており、**CSSの追加・変更は一切していない**（明るい背景に載せ替える案だと `.stat-num` `.stat-unit` `.stat-label` の3つの文字色を上書きする必要があり、トップとの見た目の連続性も切れるため）。見出し帯は明るい・本文の帯は暗い、の2段構成になる
