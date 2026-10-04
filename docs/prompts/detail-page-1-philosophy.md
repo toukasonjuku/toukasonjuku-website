@@ -57,7 +57,6 @@ ogDescription: SNSシェア時の説明文
       <span class="en">Philosophy</span>
       <span class="jp">桃下村塾の理念</span>
     </h1>
-    <p class="page-lead">桃下村塾は、岡山から社会を変革する人材を輩出することを目指す、実践型の学びの場である。</p>
   </div>
 </section>
 ```
@@ -78,8 +77,8 @@ CSSは `src/style.css` の「PAGE HERO」節に実装済み（`.page-hero` / `.b
 
 | セクション | 中身 |
 |---|---|
-| 見出し帯 | Philosophy ／ 桃下村塾の理念。リードは「桃下村塾は、岡山から社会を変革する人材を輩出することを目指す、実践型の学びの場である。」 |
-| 本文 | トップ `#about` の本文（リードの一文を除いた3段落）＋ミーティング写真（`/images/meeting.jpg`）。リードの一文は見出し帯に置いたので本文では繰り返さない |
+| 見出し帯 | Philosophy ／ 桃下村塾の理念。**`.page-lead` は置かない**（2026-10-05 りんのレビュー。リードの一文は本文の先頭に置くため） |
+| 本文 | トップ `#about` の本文を**現状のHPと同じ形のまま**。先頭の `.lead`「桃下村塾は、岡山から社会を変革する人材を輩出することを目指す、<em>実践型の学びの場</em>である。」＋続く3段落＋ミーティング写真（`/images/meeting.jpg`） |
 | 図解2枚 | `.phil-blocks` / `.phil-block`。`phil-tree.png`（小見出し「めざすのは、社会に価値を生み出す人材」）と `phil-jinzai.png?v=2`（小見出し「リーダーではなく、『自分』を育てる」） |
 | 末尾 | 成り立ち（`/origin/`）・MVV（`/mvv/`）・お問い合わせ（`/#contact`）へのリンク。`.more-link-wrap.page-links` ＋ `.more-link` を使う |
 
