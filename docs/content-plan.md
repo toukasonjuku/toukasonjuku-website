@@ -86,6 +86,17 @@
 
 現状はフラットな一覧＋接頭辞命名（`ach-*.jpg`, `activity-*.jpg`, `phil-*.png` 等）。マルチページ化後は `images/shared/` `images/top/` `images/philosophy/` `images/activities/` `images/achievements/` `images/future/` `images/news/` のようにページ別サブフォルダへ再編する。AIがどのページの画像かを迷わず配置・参照できるようにするため。
 
+**振り分けルール（2026-10-05実施）**: トップページは各詳細ページのダイジェストなので、写真は「その写真の本来のページ」のフォルダに置き、トップからもそこを参照する。
+
+- `shared/`: ロゴ類（`logo.png` `logo-icon.png` `logo-transparent.png`）と、2つ以上の詳細ページで使う写真（`ach-external.jpg`＝活動内容・実績の両方）
+- `top/`: トップだけで使う写真（`flyer.jpg`＝ヒーロー背景）
+- `philosophy/`: `meeting.jpg` `phil-tree.png` `phil-jinzai.png`
+- `activities/`: `activity-01〜03.jpg` `dojo-tech.jpg` `event-planning.jpg` `code.jpg`
+- `achievements/`: `ach-kyosei.jpg` `ach-tech.jpg` `ach-circle.jpg`
+- `future/`: `hero.jpg`（展望ページとトップの展望セクション背景）
+- `news/`: 記事の写真ができた時点で作る（空フォルダはgitで管理できないため未作成）
+- `images/tech.jpg`（3Dプリンターの写真）はどのページでも使っていないが、りんの判断（2026-10-05）で削除せず直下に残している
+
 ### 4. 更新頻度によるページ設計方針（2026-09-08決定）
 
 このサイトはデータベース・CMSを持たない完全静的サイトである。「更新のしやすさ」はページ構造ではなく、**運用の頻度で情報の置き場所を使い分ける**方針とする。

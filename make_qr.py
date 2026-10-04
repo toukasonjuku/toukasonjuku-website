@@ -25,7 +25,7 @@ img_plain.save(f"{OUT_DIR}/qr-plain.png")
 print("saved:", f"{OUT_DIR}/qr-plain.png", img_plain.size)
 
 # ---- 2) ロゴ入りQR ----
-logo = Image.open("images/logo-icon.png").convert("RGBA")
+logo = Image.open("images/shared/logo-icon.png").convert("RGBA")
 qr_w, qr_h = img_plain.size
 
 # ロゴはQR全体の約22%サイズ

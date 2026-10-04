@@ -45,7 +45,7 @@ git push                 # push後、Renderが自動検知して1〜2分で本�
 ├── index.html          ← ページ本体（文章・写真の指定・SEO/OGP/JSON-LDは全部ここ）
 ├── style.css           ← デザイン（色・文字サイズ・レイアウト）
 ├── script.js           ← ヘッダースクロール状態・ハンバーガーメニュー・スクロールreveal・スムーススクロール
-├── images/              ← 写真・ロゴ・図解（実績4枚 ach-*.jpg、活動3枚 activity-*.jpg、理念図解 phil-*.png 等）
+├── images/              ← 写真・ロゴ・図解。ページ別サブフォルダ（shared/ top/ philosophy/ activities/ achievements/ future/）。振り分けルールは content-plan.md「3.」
 ├── qr/                 ← サイトQRコード（qr-logo.png / qr-plain.png）
 ├── make_qr.py           ← QRコード再生成スクリプト（要 qrcode / pillow）
 ├── favicon.ico / favicon.png / favicon-96.png / apple-touch-icon.png / favicon.svg

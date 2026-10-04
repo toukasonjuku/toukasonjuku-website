@@ -3,7 +3,7 @@
 **タスクの正は [Notion「桃下村塾」データベース内プロジェクトページ](https://app.notion.com/p/3c0edf84e39e81149387d451475ce129)**。
 2026-08-26以降、Notion MCP（`mcp__claude_ai_Notion__*`）が接続済みで、AIが直接読み書きする。このファイルはClaude Codeが参照しやすいようにNotionの内容をローカルへミラーしたもの。**齟齬があればNotionを優先する。**
 
-最終反映日: 2026-09-30（Origin・MVVを独立ページへ分離し、7ページ構成に変更。/philosophy /origin /mvv を実装、レビュー待ち）
+最終反映日: 2026-10-05（フェーズ1完了をりんが確認。展望ページのみ保留。フェーズ2＝画像のページ別フォルダ再編に着手）
 
 ---
 
@@ -29,7 +29,7 @@
    6. 実績ページ(`/achievements`)
    7. 展望ページ(`/future`)
    8. `/news`一覧ページ（記事の自動生成の仕組みは、実際の記事が出てから別タスク）
-2. **フェーズ2: 画像整理はページごとに** — `images/`のページ別サブフォルダ再編は一括ではなく、各ページ実装のタイミングでそのページが使う画像だけ移動・パス更新する
+2. **フェーズ2: 画像整理** — `images/`をページ別サブフォルダへ再編する。当初は各ページ実装のタイミングで少しずつ移動する予定だったが、フェーズ1完了後の2026-10-05に一括で実施
 3. **フェーズ3: SEO仕上げ** — 全ページ完成後、title/description/OGP/JSON-LDを一括見直し、`sitemap.xml`を更新
 4. **フェーズ4: 本番反映** — Render設定切替 → クリーンURL動作確認 → `main`マージ（下記「本番反映」セクション参照、都度合意の上で実施）
 
@@ -46,17 +46,17 @@
 
 | タスク（Notion） | ステータス | 備考 |
 |---|---|---|
-| 共通コンポーネント設計(グローバルナビ・フッター) | 進行中 | `src/partials/`(head/header/footer)+`build.js`で実装済み。ヘッダーナビの新URL対応は未着手 |
-| トップページ(index)再構成 | 進行中 | 2026-09-17、手書き案に基づき構成確定（`content-plan.md`「5. トップページ構成」）・実装済み、りんのレビュー待ち。`[要確認]`: お知らせ記事3件 |
-| 理念ページ(/philosophy)作成 | 進行中 | 2026-09-30、理念のみのページに作り直し（Origin・MVVは分離）。`src/pages/philosophy/index.html`、実装プロンプト`docs/prompts/detail-page-1-philosophy.md`。りんのレビュー待ち。`[要確認]`なし |
-| 成り立ちページ(/origin)作成 | 進行中 | 2026-09-30新規。`/philosophy/#origin` から独立ページへ。`src/pages/origin/index.html`、実装プロンプト`docs/prompts/detail-page-2-origin.md`。りんのレビュー待ち。`[要確認]`なし |
-| MVVページ(/mvv)作成 | 進行中 | 2026-09-30新規。`/philosophy/#mvv` から独立ページへ。Mission・Vision・5つのバリューを1ページに。`src/pages/mvv/index.html`、実装プロンプト`docs/prompts/detail-page-3-mvv.md`。りんのレビュー待ち。`[要確認]`なし |
-| 活動内容ページ(/activities)作成 | 未着手 | 実装プロンプト`docs/prompts/detail-page-4-activities.md`。並行セッションによる未レビューの下書きが`src/pages/activities/`にある（未コミット） |
-| 実績ページ(/achievements)作成 | 未着手 | 実装プロンプト`docs/prompts/detail-page-5-achievements.md`。並行セッションによる未レビューの下書きが`src/pages/achievements/`にある（未コミット） |
+| 共通コンポーネント設計(グローバルナビ・フッター) | 完了 | `src/partials/`(head/header/footer)+`build.js`で実装。ヘッダー・フッターのナビは各詳細ページへのリンクに対応済み。2026-10-05完了 |
+| トップページ(index)再構成 | 完了 | 2026-09-17構成確定（`content-plan.md`「5. トップページ構成」）。2026-10-05、りんがフェーズ1完了を確認 |
+| 理念ページ(/philosophy)作成 | 完了 | `src/pages/philosophy/index.html`。2026-10-05完了 |
+| 成り立ちページ(/origin)作成 | 完了 | `src/pages/origin/index.html`。2026-10-05完了 |
+| MVVページ(/mvv)作成 | 完了 | `src/pages/mvv/index.html`。2026-10-05完了 |
+| 活動内容ページ(/activities)作成 | 完了 | `src/pages/activities/index.html`。2026-10-05完了。写真の重複（activity-01が2回）は差し替え写真待ち |
+| 実績ページ(/achievements)作成 | 完了 | `src/pages/achievements/index.html`。2026-10-05完了 |
 | 展望ページ(/future)作成 | 進行中 | 2026-09-17、URLを`/vision`から`/future`へ改名。実装プロンプト`docs/prompts/detail-page-6-future.md`。2026-09-30実装・りんのレビュー待ち。`[要確認]`: OCS・高校出張・スポンサー募集の内容。**2026-10-05、内容（数字欄の要否を含む）は今後りんが村長と相談して決めるため保留。それまで手を入れない** |
 | Contactセクション(共通フッター)実装 | 未着手 | `footer.html`切り出し済み、内容は現行のまま |
-| お知らせページ新設 | 未着手 | 2026-09-08、設計方針を決定：個別記事ページ＋一覧はbuild.jsが自動生成（SEO記事単位最適化のため）。詳細は`content-plan.md`「4. 更新頻度によるページ設計方針」参照。実装（build.js拡張・テンプレート作成）は未着手。2026-09-29、まずは一覧ページだけ作り、記事システムは実際の記事が出てから別タスクにすることで確定。実装プロンプト`docs/prompts/detail-page-7-news.md`。並行セッションによる未レビューの下書きが`src/pages/news/`にある（未コミット） |
-| 画像・写真素材の整理(各ページ用) | 未着手 | ページ別サブフォルダへの再編方針は決定済み（`content-plan.md`参照） |
+| お知らせページ新設 | 完了 | 2026-10-05、一覧ページ（`src/pages/news/index.html`、記事0件の状態）まで完了。個別記事＋build.jsによる一覧自動生成は、実際の記事が出てから別タスクで着手（設計は`content-plan.md`「4.」） |
+| 画像・写真素材の整理(各ページ用) | 進行中 | 2026-10-05着手。`images/`をページ別サブフォルダへ移動し、参照パスを更新済み（りんのレビュー待ち）。振り分けルールは`content-plan.md`「3.」 |
 | sitemap.xml / SEO設定のマルチページ対応 | 未着手 | |
 | Render上での動作確認・デプロイ | 未着手 | ★`main`マージ前に必ずBuild Command/Publish Directory切替が必要（下記参照） |
 | 公開前最終チェック | 未着手 | |
