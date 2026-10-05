@@ -1,0 +1,8 @@
+{
+  "name": "toukasonjuku-website",
+  "private": true,
+  "description": "桃下村塾 公式サイト（静的HTML/CSS/JS、npm依存ゼロのビルドスクリプトでpartialsを結合）",
+  "scripts": {
+    "build": "node build.js"
+  }
+}
