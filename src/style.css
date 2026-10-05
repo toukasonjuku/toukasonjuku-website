@@ -1898,6 +1898,100 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
     scroll-snap-align:start;
   }
 }
+/* =========================================================
+   CAROUSEL（トップの Activities / Achievements・JAF Mate型）
+   script.js が [data-carousel] に .is-carousel を付けたときだけ横並びになる
+   ========================================================= */
+/* cqw（.carousel の幅を基準にした単位）で、カード幅と左右の余白を同じ基準で計算する */
+.carousel{position:relative;container-type:inline-size}
+.carousel.is-carousel .carousel-track{
+  --slide-w:min(58cqw, 780px);
+  display:flex;
+  gap:clamp(16px, 2vw, 28px);
+  max-width:none;
+  /* 画面の端まで使い、最初と最後のカードも中央に来られるよう左右に余白を取る */
+  margin:0 calc(-1 * var(--gutter));
+  padding:8px calc((100cqw + 2 * var(--gutter) - var(--slide-w)) / 2) 16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  position:relative;
+  outline:none;
+}
+.carousel.is-carousel .carousel-track::-webkit-scrollbar{display:none}
+.carousel.is-carousel .carousel-track:focus-visible{outline:2px solid var(--c-peach-dk);outline-offset:4px}
+.carousel.is-carousel .carousel-track > .ach-card:nth-child(n){
+  flex:0 0 var(--slide-w);
+  width:auto;max-width:none;
+  grid-column:auto;justify-self:auto;
+  scroll-snap-align:center;
+  cursor:pointer;
+  opacity:.45;
+  transform:scale(.9);
+  transition:transform .6s var(--ease), opacity .6s var(--ease), box-shadow .6s var(--ease);
+}
+.carousel.is-carousel .carousel-track > .ach-card.is-active{
+  opacity:1;
+  transform:scale(1);
+  cursor:auto;
+  box-shadow:0 24px 48px -30px rgba(58,74,110,.4);
+}
+.carousel.is-carousel .ach-img{aspect-ratio:16/9}
+.carousel.is-carousel .ach-card.no-img .ach-body{justify-content:center}
+
+/* 操作部品：← ・・・・・ ❚❚ → */
+.carousel-ui{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(12px, 2vw, 20px);
+  margin-top:clamp(18px, 2.4vw, 28px);
+}
+.carousel-btn{
+  width:46px;height:46px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--c-peach);
+  background:var(--c-bg);
+  color:var(--c-peach-dk);
+  font-family:var(--f-en);font-size:18px;line-height:1;
+  cursor:pointer;
+  transition:background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+}
+.carousel-btn:hover{background:var(--c-peach-dk);border-color:var(--c-peach-dk);color:var(--c-bg)}
+.carousel-btn:focus-visible,
+.carousel-dot:focus-visible{outline:2px solid var(--c-peach-dk);outline-offset:3px}
+.carousel-toggle{width:38px;height:38px;border-color:var(--c-line)}
+/* 再生中は「❚❚」、停止中は「▶」を CSS で描く */
+.carousel-toggle-icon{
+  width:10px;height:12px;
+  border-left:3px solid currentColor;border-right:3px solid currentColor;
+}
+.carousel.is-paused .carousel-toggle-icon{
+  width:0;height:0;
+  border-style:solid;
+  border-width:6px 0 6px 10px;
+  border-color:transparent transparent transparent currentColor;
+  margin-left:3px;
+}
+.carousel-dots{display:flex;align-items:center;gap:10px}
+.carousel-dot{
+  width:8px;height:8px;padding:0;border:0;border-radius:4px;
+  background:var(--c-line);
+  cursor:pointer;
+  transition:width .4s var(--ease), background .4s var(--ease);
+}
+.carousel-dot[aria-current="true"]{width:28px;background:var(--c-peach-dk)}
+
+@media (max-width:760px){
+  .carousel.is-carousel .carousel-track{--slide-w:calc((100cqw + 2 * var(--gutter)) * .84);gap:12px}
+  .carousel.is-carousel .carousel-track > .ach-card:nth-child(n){transform:scale(.94)}
+  .carousel.is-carousel .carousel-track > .ach-card.is-active{transform:scale(1)}
+  .carousel.is-carousel .ach-img{aspect-ratio:16/10}
+  .carousel-btn{width:40px;height:40px;font-size:16px}
+}
+@media (prefers-reduced-motion: reduce){
+  .carousel.is-carousel .carousel-track > .ach-card:nth-child(n){transition:none}
+}
+
 /* hide mobile-only line break on desktop */
 .sp-br{display:none}
 

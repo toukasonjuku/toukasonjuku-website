@@ -232,62 +232,65 @@ ogDescription: AIとビジネスを実践的に学ぶ、岡山発の学生団体
     </div>
 
     <!-- 実績と同じカード形式（ach-* のスタイルを共用）。項目は /activities/ と同じ5つ、本文は各項目の最初の一文 -->
-    <div class="ach-grid">
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/activities/activity-01.jpg" alt="ももした道場（ビジネス）の様子" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">01</span>
-          <h3 class="ach-title">ももした道場（ビジネス）</h3>
-          <p class="ach-sub">週1回</p>
-          <p class="ach-text">AI活用・イベント企画・プロジェクト運営などを、実践を通して学ぶ場。</p>
-        </div>
-      </article>
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/activities/dojo-tech.jpg" alt="ももした道場（TEC）で、ノートPCを囲んで学ぶメンバーの様子" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">02</span>
-          <h3 class="ach-title">ももした道場（TEC）</h3>
-          <p class="ach-sub">週1回</p>
-          <p class="ach-text">AI・プログラミングなど、これからの時代に必要なテクノロジーを実践的に学ぶ場。</p>
-        </div>
-      </article>
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/activities/activity-02.jpg" alt="月次定例会" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">03</span>
-          <h3 class="ach-title">定例会</h3>
-          <p class="ach-sub">月1回</p>
-          <p class="ach-text">メンバー全員が集まり、活動の方向性や個々のプロジェクトを共有する場。</p>
-        </div>
-      </article>
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/activities/event-planning.jpg" alt="企画イベントでの集合写真" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">04</span>
-          <h3 class="ach-title">企画イベント</h3>
-          <p class="ach-sub">月1回</p>
-          <p class="ach-text">「企画」役職のメンバーが毎月考える、仲を深めるための恒例イベント。</p>
-        </div>
-      </article>
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/shared/ach-external.jpg" alt="外部向けイベント・コラボレーションの様子" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">05</span>
-          <h3 class="ach-title">イベント・コラボレーション</h3>
-          <p class="ach-sub">随時</p>
-          <p class="ach-text">外部講師を招いた勉強会、企業との共同企画、地域課題への取り組みなど、テーマに応じた企画を随時実施。</p>
-        </div>
-      </article>
+    <!-- 横に流れるカード（JAF Mate型）。script.js が .is-carousel を付けて矢印・自動切り替えを足す。JSが無い環境ではふつうのカード一覧のまま -->
+    <div class="carousel reveal" data-carousel aria-roledescription="carousel" aria-label="活動内容">
+      <div class="ach-grid carousel-track">
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/activities/activity-01.jpg" alt="ももした道場（ビジネス）の様子" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">01</span>
+            <h3 class="ach-title">ももした道場（ビジネス）</h3>
+            <p class="ach-sub">週1回</p>
+            <p class="ach-text">AI活用・イベント企画・プロジェクト運営などを、実践を通して学ぶ場。</p>
+          </div>
+        </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/activities/dojo-tech.jpg" alt="ももした道場（TEC）で、ノートPCを囲んで学ぶメンバーの様子" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">02</span>
+            <h3 class="ach-title">ももした道場（TEC）</h3>
+            <p class="ach-sub">週1回</p>
+            <p class="ach-text">AI・プログラミングなど、これからの時代に必要なテクノロジーを実践的に学ぶ場。</p>
+          </div>
+        </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/activities/activity-02.jpg" alt="月次定例会" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">03</span>
+            <h3 class="ach-title">定例会</h3>
+            <p class="ach-sub">月1回</p>
+            <p class="ach-text">メンバー全員が集まり、活動の方向性や個々のプロジェクトを共有する場。</p>
+          </div>
+        </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/activities/event-planning.jpg" alt="企画イベントでの集合写真" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">04</span>
+            <h3 class="ach-title">企画イベント</h3>
+            <p class="ach-sub">月1回</p>
+            <p class="ach-text">「企画」役職のメンバーが毎月考える、仲を深めるための恒例イベント。</p>
+          </div>
+        </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/shared/ach-external.jpg" alt="外部向けイベント・コラボレーションの様子" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">05</span>
+            <h3 class="ach-title">イベント・コラボレーション</h3>
+            <p class="ach-sub">随時</p>
+            <p class="ach-text">外部講師を招いた勉強会、企業との共同企画、地域課題への取り組みなど、テーマに応じた企画を随時実施。</p>
+          </div>
+        </article>
+      </div>
     </div>
     <div class="more-link-wrap reveal">
       <a href="/activities/" class="more-link">詳しく見る<span class="more-arrow" aria-hidden="true">→</span></a>
@@ -309,63 +312,66 @@ ogDescription: AIとビジネスを実践的に学ぶ、岡山発の学生団体
       </h2>
     </div>
 
-    <div class="ach-grid">
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/achievements/ach-kyosei.jpg" alt="協生PJ 協生農法フィールドワーク" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">01</span>
-          <h3 class="ach-title">協生PJ</h3>
-          <p class="ach-sub">Cooperative Project</p>
-          <p class="ach-text">地域社会や企業と連携した共創型プロジェクト。学生が課題発見から実装まで一気通貫で担当する。</p>
-        </div>
-      </article>
+    <!-- 横に流れるカード（JAF Mate型）。script.js が .is-carousel を付けて矢印・自動切り替えを足す。JSが無い環境ではふつうのカード一覧のまま -->
+    <div class="carousel reveal" data-carousel aria-roledescription="carousel" aria-label="これまでの実績">
+      <div class="ach-grid carousel-track">
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/achievements/ach-kyosei.jpg" alt="協生PJ 協生農法フィールドワーク" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">01</span>
+            <h3 class="ach-title">協生PJ</h3>
+            <p class="ach-sub">Cooperative Project</p>
+            <p class="ach-text">地域社会や企業と連携した共創型プロジェクト。学生が課題発見から実装まで一気通貫で担当する。</p>
+          </div>
+        </article>
 
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/achievements/ach-tech.jpg" alt="Tech Study Lab 実装研究会" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">02</span>
-          <h3 class="ach-title">Tech Study Lab</h3>
-          <p class="ach-sub">テクノロジー実装研究会</p>
-          <p class="ach-text">AIやITを「使う」だけでなく「実装する」ことに重きを置いた技術研究の場。</p>
-        </div>
-      </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/achievements/ach-tech.jpg" alt="Tech Study Lab 実装研究会" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">02</span>
+            <h3 class="ach-title">Tech Study Lab</h3>
+            <p class="ach-sub">テクノロジー実装研究会</p>
+            <p class="ach-text">AIやITを「使う」だけでなく「実装する」ことに重きを置いた技術研究の場。</p>
+          </div>
+        </article>
 
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/achievements/ach-circle.jpg?v=2" alt="サークルコラボ 合同企画" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">03</span>
-          <h3 class="ach-title">サークルコラボ</h3>
-          <p class="ach-sub">Circle Collaboration</p>
-          <p class="ach-text">他の学生団体・サークルとの合同企画やイベント開催。専門性を越えた交流から新しい価値をつくる。</p>
-        </div>
-      </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/achievements/ach-circle.jpg?v=2" alt="サークルコラボ 合同企画" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">03</span>
+            <h3 class="ach-title">サークルコラボ</h3>
+            <p class="ach-sub">Circle Collaboration</p>
+            <p class="ach-text">他の学生団体・サークルとの合同企画やイベント開催。専門性を越えた交流から新しい価値をつくる。</p>
+          </div>
+        </article>
 
-      <article class="ach-card reveal no-img">
-        <div class="ach-body">
-          <span class="ach-num">04</span>
-          <h3 class="ach-title">高校生への授業</h3>
-          <p class="ach-sub">Class for High School Students</p>
-          <p class="ach-text">岡山県内の高校でAIやビジネスをテーマにした出張授業を実施。次世代の挑戦の入口をつくる。</p>
-        </div>
-      </article>
+        <article class="ach-card no-img">
+          <div class="ach-body">
+            <span class="ach-num">04</span>
+            <h3 class="ach-title">高校生への授業</h3>
+            <p class="ach-sub">Class for High School Students</p>
+            <p class="ach-text">岡山県内の高校でAIやビジネスをテーマにした出張授業を実施。次世代の挑戦の入口をつくる。</p>
+          </div>
+        </article>
 
-      <article class="ach-card reveal">
-        <div class="ach-img">
-          <img src="/images/shared/ach-external.jpg" alt="外部イベント Notion&AI 講座" loading="lazy" />
-        </div>
-        <div class="ach-body">
-          <span class="ach-num">05</span>
-          <h3 class="ach-title">外部イベント</h3>
-          <p class="ach-sub">External Events</p>
-          <p class="ach-text">学外イベント・カンファレンスへの登壇や出展を通じて、団体の活動と岡山の挑戦を発信。</p>
-        </div>
-      </article>
+        <article class="ach-card">
+          <div class="ach-img">
+            <img src="/images/shared/ach-external.jpg" alt="外部イベント Notion&AI 講座" loading="lazy" />
+          </div>
+          <div class="ach-body">
+            <span class="ach-num">05</span>
+            <h3 class="ach-title">外部イベント</h3>
+            <p class="ach-sub">External Events</p>
+            <p class="ach-text">学外イベント・カンファレンスへの登壇や出展を通じて、団体の活動と岡山の挑戦を発信。</p>
+          </div>
+        </article>
+      </div>
     </div>
     <div class="more-link-wrap reveal">
       <a href="/achievements/" class="more-link">詳しく見る<span class="more-arrow" aria-hidden="true">→</span></a>

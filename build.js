@@ -89,7 +89,7 @@ ${head}
 ${headerHtml}
 ${body}
 ${footerHtml}
-<script src="/script.js?v=20261005f"></script>
+<script src="/script.js?v=20261005g"></script>
 </body>
 </html>
 `;
