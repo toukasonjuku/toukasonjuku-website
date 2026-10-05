@@ -22,6 +22,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // ---- ページ先頭へ戻るボタン（1画面分スクロールしたら表示） ----
+  const toTop = document.getElementById('toTop');
+  if (toTop) {
+    const onScrollTop = () => toTop.classList.toggle('is-shown', window.scrollY > window.innerHeight * .8);
+    window.addEventListener('scroll', onScrollTop, { passive: true });
+    onScrollTop();
+    toTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // ---- Current page in nav ----
   // ハッシュなしのリンクだけを対象に、今いるページの項目へ .is-current を付ける
   const here = location.pathname.replace(/index\.html$/, '');

@@ -330,8 +330,10 @@ em{font-style:normal;color:var(--c-peach-dk);font-weight:500}
   opacity:.7;
 }
 .hero-scroll{
-  position:absolute;
-  bottom:40px;left:var(--gutter);
+  position:absolute;z-index:2;
+  bottom:40px;
+  /* 本文（.hero-content）の左端にそろえる */
+  left:max(var(--gutter), calc((100% - var(--max)) / 2 + var(--gutter)));
   font-family:var(--f-en);
   font-size:11px;
   letter-spacing:.4em;
@@ -1436,6 +1438,11 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   margin-bottom:28px;
 }
 .ocs-support .future-text{margin-bottom:0;max-width:46em}
+/* トップの Future 欄（OCS の要約） */
+.future .future-lead + .future-text{max-width:46em}
+.more-link-wrap.left.page-links{justify-content:flex-start}
+/* トップの理念欄は本文が短いので、写真と上下中央でそろえる */
+.about-grid.is-summary{align-items:center}
 .ocs-key .future-stats + .more-link-wrap{margin-top:clamp(40px, 5vw, 56px)}
 .ocs-support .more-link-wrap{display:flex;flex-wrap:wrap;gap:18px clamp(24px, 4vw, 48px)}
 .ocs-outline dd a{
@@ -1588,7 +1595,7 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px;
-  max-width:780px;
+  max-width:960px;
   margin:0 auto 80px;
 }
 .contact-card{
@@ -1634,8 +1641,10 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   font-size:17px;
   font-weight:500;
   color:var(--c-deep);
-  letter-spacing:.04em;
-  word-break:break-all;
+  letter-spacing:.02em;
+  /* メールアドレスは途中で切らず、幅が足りないときだけ「@」の後（<wbr>）で折り返す */
+  word-break:normal;
+  overflow-wrap:anywhere;
 }
 .cc-arrow{
   flex-shrink:0;
@@ -1719,7 +1728,10 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 .footer-tagline{
   margin-top:20px;font-size:15px;line-height:1.9;letter-spacing:.08em;
 }
-.footer-nav ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
+/* 縦に読む順（Philosophy→Origin→MVV→…）になるよう、列方向に流す */
+.footer-nav ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4, auto);grid-auto-flow:column;gap:12px 24px}
+.footer-home{display:inline-block;color:inherit}
+.footer-home:hover .brand-jp{color:var(--c-peach-lt)}
 .footer-nav a{
   font-family:var(--f-en);font-size:15px;font-weight:600;letter-spacing:.2em;color:#bfb6b3;
   transition:color .3s var(--ease);
@@ -1728,6 +1740,23 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 .footer-meta p{font-size:15px;line-height:2;letter-spacing:.04em}
 .footer-meta a{color:#fff;border-bottom:1px solid rgba(255,255,255,.2);transition:color .3s, border-color .3s}
 .footer-meta a:hover{color:var(--c-peach);border-color:var(--c-peach)}
+/* ページ先頭へ戻るボタン（全ページ共通・右下に固定） */
+.to-top{
+  position:fixed;z-index:90;
+  right:clamp(16px, 2.4vw, 32px);bottom:clamp(16px, 2.4vw, 32px);
+  width:56px;height:56px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--c-peach);
+  color:var(--c-peach-dk);
+  box-shadow:0 6px 20px rgba(42,29,31,.12);
+  opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), visibility .4s, background .3s var(--ease), color .3s var(--ease);
+}
+.to-top.is-shown{opacity:1;visibility:visible;transform:translateY(0)}
+.to-top:hover{background:var(--c-peach-dk);color:var(--c-bg)}
+.to-top-arrow{font-family:var(--f-en);font-size:18px;line-height:1}
+.to-top-label{font-family:var(--f-en);font-size:10px;font-weight:600;letter-spacing:.18em;line-height:1}
 .copyright{
   text-align:center;padding:24px 0;
   font-family:var(--f-en);font-size:13px;letter-spacing:.26em;color:#8a817e;
@@ -1760,7 +1789,7 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   .contact-cards{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr;text-align:left}
-  .footer-nav ul{grid-template-columns:repeat(3, 1fr)}
+  .footer-nav ul{max-width:420px}
 
   .values-grid{grid-template-columns:repeat(2, 1fr)}
   .value-card:nth-child(-n+3),
