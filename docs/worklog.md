@@ -14,6 +14,14 @@
 
 ---
 
+### 2026-10-06 Google Search Consoleの所有権確認タグを追加（関連タスク: docs/tasks.md Render上での動作確認・デプロイ）
+- 内容: 2026-10-06、マルチページ版を本番公開（Render: Build Command=`node build.js` / Publish Directory=`dist`、PR #1 をマージ後に手動デプロイ）。既存のSearch Consoleの登録アカウントが不明なため、団体のGoogleアカウントで `https://www.momoshita.jp/`（URLプレフィックス）を登録し直すことにし、確認用の `google-site-verification` タグを `head.html` に追加した（既存の2つは残す）
+- コミット: 本コミット
+- 確認: `node build.js` 成功。全ページの `<head>` にタグが入ること
+- 次にやること: デプロイ後にSearch Consoleで「確認」→ `sitemap.xml` を送信。RenderのGitHub連携が切れていて自動デプロイが動かないため、`toukasonjuku` 組織にRenderのGitHubアプリを入れ直す。Renderの「Payment failed」を前任者に伝える
+
+---
+
 ### 2026-10-05 実績「AIワークショップ主催」のサブタイトルと説明文を更新（関連タスク: docs/tasks.md 実績ページ）
 - 内容: 旧名「Tech Study Lab」のときのまま残っていたサブタイトル「テクノロジー実装研究会」と説明文を、りんが選んだ案に差し替えた（実績ページ・トップの両方）。サブタイトル「Hands-on AI Workshop」、説明文はNotion「ワークショップ運営」ページの事実（4者共催・Raspberry Piの遠隔操作・LED制御）にもとづく。共催先の社名・大学名は公開の了承が未確認のため載せていない
 - コミット: 本コミット
