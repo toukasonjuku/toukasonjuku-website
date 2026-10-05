@@ -798,18 +798,16 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   font-size:15.5px;
   letter-spacing:.04em;
 }
-/* 成り立ち：集合写真＋引用（トップ #origin と /origin/ で共通）
-   写真の後ろに桃色の枠をずらして重ね、引用は白いカードにして写真の右下にかぶせる */
-.origin-body:has(.origin-visual){align-items:center}
-.origin-visual{
-  position:relative;
-  max-width:540px;
-  padding:0 0 clamp(56px, 6vw, 84px);
+/* 成り立ち：左に集合写真、右の上に見出し（引用）、右の下に本文（トップ #origin と /origin/ で共通）
+   写真の後ろに桃色の枠をずらして重ねる */
+.origin-body:has(.origin-photo){
+  grid-template-columns:.95fr 1.05fr;
+  align-items:stretch;
 }
 .origin-photo{
   position:relative;z-index:0;
-  width:84%;
-  margin:0;
+  align-self:start;
+  margin:0 clamp(12px, 1.6vw, 22px) clamp(12px, 1.6vw, 22px) 0;
 }
 .origin-photo::before{
   content:"";
@@ -823,32 +821,25 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   width:100%;
   aspect-ratio:5/4;
   object-fit:cover;
-  object-position:50% 50%;
   filter:saturate(.95);
 }
-.origin-visual .lead-quote{
-  position:absolute;z-index:1;
-  top:auto;right:0;bottom:0;
-  width:min(78%, 400px);
-  margin:0;
-  padding:clamp(20px, 2.2vw, 30px) clamp(20px, 2.2vw, 30px) clamp(20px, 2.2vw, 30px) clamp(22px, 2.4vw, 32px);
-  background:rgba(255,255,255,.96);
-  font-size:clamp(17px, 1.7vw, 22px);
-  line-height:1.8;
-  box-shadow:0 24px 48px -28px rgba(42,29,31,.35);
+/* 右の列：見出しを上端、本文を下端にそろえる（本文が長いページでは自然に積み重なる） */
+.origin-main{
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  gap:clamp(28px, 3.4vw, 44px);
 }
+.origin-main .lead-quote{position:static}
+/* 「力を、」の後で改行させる（幅が足りなければ各まとまりの中で折り返す） */
+.lead-quote .ib{display:inline-block}
+.origin-main .origin-text p:last-child{margin-bottom:0}
 @media (max-width:960px){
-  .origin-visual{max-width:560px;margin:0 auto}
+  .origin-body:has(.origin-photo){grid-template-columns:1fr}
+  .origin-photo{max-width:560px;width:calc(100% - 14px)}
 }
 @media (max-width:560px){
-  .origin-visual{padding:0}
-  .origin-photo{width:100%}
-  .origin-photo::before{transform:translate(10px, 10px)}
-  .origin-visual .lead-quote{
-    position:relative;
-    width:88%;
-    margin:-44px 0 0 auto;
-  }
+  /* 引用の2行目「身につけられる場所をつくりたい」」が1行に収まる大きさに */
+  .origin-main .lead-quote{font-size:19px;letter-spacing:.02em;padding-left:18px}
 }
 
 /* =========================================================
