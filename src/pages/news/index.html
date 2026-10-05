@@ -1,5 +1,5 @@
 <!--meta
-title: 桃下村塾（とうかそんじゅく）｜ お知らせ
+title: お知らせ ｜ 桃下村塾（とうかそんじゅく）
 description: 桃下村塾（とうかそんじゅく）からのお知らせ一覧。イベントの開催報告、他団体とのコラボレーションの告知、メンバー募集など、岡山大学を中心に活動するAI学生団体の最新の動きをこのページでお伝えします。
 canonical: https://www.momoshita.jp/news/
 ogTitle: お知らせ ｜ 桃下村塾
@@ -26,27 +26,21 @@ ogDescription: イベントの開催報告やコラボレーションの告知�
   <div class="deco deco-graph" aria-hidden="true"></div>
   <div class="container">
 
-    <p class="news-empty reveal">
-      現在、掲載しているお知らせはありません。<br />
-      今後、イベントの開催報告や他団体とのコラボレーションの告知などを掲載していきます。
-    </p>
-
-    <!-- 記事が決まったら、下の雛形のコメントを外して <ul class="news-list reveal"> を並べ、
-         上の .news-empty を削除する。.news-item は必要な数だけ複製する。
-         トップページ #news も現在は同じ「掲載なし」表示なので、同じタイミングで最新3件に差し替えること。
-         記事を自動で並べる仕組み（1記事=1ファイル + build.js での一覧生成）は、
-         実際の記事が出てきてから別タスクで作る（docs/content-plan.md「4. 更新頻度によるページ設計方針」）。
-
     <ul class="news-list reveal">
       <li class="news-item">
-        <a href="/news/">
-          <span class="news-date">YYYY.MM.DD</span>
-          <span class="news-title">記事タイトル</span>
+        <a href="/news/summer-camp-2026/">
+          <span class="news-date">2026.08.08</span>
+          <span class="news-title">備前市・頭島で夏合宿を行いました</span>
           <span class="news-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </li>
     </ul>
-    -->
+
+    <!-- 記事を追加するときは、src/pages/news/<slug>/index.html を作り、上の .news-item を
+         日付の新しい順に複製して並べる（build.js は src/pages/**/index.html を自動で拾う）。
+         トップページ #news には最新3件までを同じ形で載せること。
+         一覧を build.js で自動生成する仕組みは、記事が増えてきたら別タスクで作る
+         （docs/content-plan.md「4. 更新頻度によるページ設計方針」）。 -->
 
     <div class="more-link-wrap page-links reveal">
       <a href="/activities/" class="more-link">活動内容<span class="more-arrow" aria-hidden="true">→</span></a>
