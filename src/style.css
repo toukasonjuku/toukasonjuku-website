@@ -798,22 +798,57 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   font-size:15.5px;
   letter-spacing:.04em;
 }
-/* 成り立ちページ末尾の集合写真（縦長の元写真を横長に切り出す） */
+/* 成り立ち：集合写真＋引用（トップ #origin と /origin/ で共通）
+   写真の後ろに桃色の枠をずらして重ね、引用は白いカードにして写真の右下にかぶせる */
+.origin-body:has(.origin-visual){align-items:center}
+.origin-visual{
+  position:relative;
+  max-width:540px;
+  padding:0 0 clamp(56px, 6vw, 84px);
+}
 .origin-photo{
-  position:relative;z-index:1;
-  margin-top:clamp(40px, 6vw, 72px);
+  position:relative;z-index:0;
+  width:84%;
+  margin:0;
+}
+.origin-photo::before{
+  content:"";
+  position:absolute;inset:0;z-index:-1;
+  transform:translate(clamp(12px, 1.6vw, 22px), clamp(12px, 1.6vw, 22px));
+  border:1px solid var(--c-peach);
+  background:var(--c-peach-lt);
+  opacity:.7;
 }
 .origin-photo img{
   width:100%;
-  aspect-ratio:16/9;
+  aspect-ratio:5/4;
   object-fit:cover;
-  object-position:50% 54%;
+  object-position:50% 50%;
   filter:saturate(.95);
-  border-left:3px solid var(--c-peach);
 }
-.origin-photo .image-caption{text-align:right}
-@media (max-width:760px){
-  .origin-photo img{aspect-ratio:4/3;object-position:50% 62%}
+.origin-visual .lead-quote{
+  position:absolute;z-index:1;
+  top:auto;right:0;bottom:0;
+  width:min(78%, 400px);
+  margin:0;
+  padding:clamp(20px, 2.2vw, 30px) clamp(20px, 2.2vw, 30px) clamp(20px, 2.2vw, 30px) clamp(22px, 2.4vw, 32px);
+  background:rgba(255,255,255,.96);
+  font-size:clamp(17px, 1.7vw, 22px);
+  line-height:1.8;
+  box-shadow:0 24px 48px -28px rgba(42,29,31,.35);
+}
+@media (max-width:960px){
+  .origin-visual{max-width:560px;margin:0 auto}
+}
+@media (max-width:560px){
+  .origin-visual{padding:0}
+  .origin-photo{width:100%}
+  .origin-photo::before{transform:translate(10px, 10px)}
+  .origin-visual .lead-quote{
+    position:relative;
+    width:88%;
+    margin:-44px 0 0 auto;
+  }
 }
 
 /* =========================================================
