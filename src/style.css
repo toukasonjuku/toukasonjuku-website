@@ -1808,7 +1808,8 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 }
 .footer-inner{
   display:grid;
-  grid-template-columns:1.2fr 1fr 1.2fr;
+  /* メニュー列は中身の幅に合わせ、英単語が途中で折れないようにする */
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
   gap:40px;
   padding-bottom:60px;
   border-bottom:1px solid rgba(255,255,255,.08);
@@ -1831,14 +1832,16 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   margin-top:20px;font-size:15px;line-height:1.9;letter-spacing:.08em;
 }
 /* 縦に読む順（Philosophy→Origin→MVV→…）になるよう、列方向に流す */
-.footer-nav ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4, auto);grid-auto-flow:column;gap:12px 24px}
+.footer-nav ul{list-style:none;display:grid;grid-template-columns:auto auto;grid-template-rows:repeat(4, auto);grid-auto-flow:column;gap:12px clamp(28px, 3.4vw, 56px)}
 .footer-home{display:inline-block;color:inherit}
 .footer-home:hover .brand-jp{color:var(--c-peach-lt)}
 .footer-nav a{
+  white-space:nowrap;
   font-family:var(--f-en);font-size:15px;font-weight:600;letter-spacing:.2em;color:#bfb6b3;
   transition:color .3s var(--ease);
 }
 .footer-nav a:hover{color:var(--c-peach)}
+.footer-meta{justify-self:end}
 .footer-meta p{font-size:15px;line-height:2;letter-spacing:.04em}
 .footer-meta a{color:#fff;border-bottom:1px solid rgba(255,255,255,.2);transition:color .3s, border-color .3s}
 .footer-meta a:hover{color:var(--c-peach);border-color:var(--c-peach)}
@@ -1873,13 +1876,16 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   .value-card:nth-child(4){grid-column:1 / 3}
   .value-card:nth-child(5){grid-column:3 / 5}
 }
+/* 手書き案「上にスクロールしたらヘッダーを表示」に従い、タブレット・小さめのPC幅でも
+   ヘッダーに8ページのリンクを並べる。文字を小さくして1行に収め、ハンバーガーはスマホ幅（760px以下）だけ */
 @media (max-width: 1180px){
-  .nav-desktop{display:none}
-  .hamburger{display:block}
+  .nav-desktop ul{gap:16px}
+  .nav-desktop a{font-size:14px;letter-spacing:.08em}
 }
 @media (max-width: 960px){
-  .nav-desktop{display:none}
-  .hamburger{display:block}
+  .brand-text{display:none}
+  .nav-desktop ul{gap:14px}
+  .nav-desktop a{font-size:13.5px;letter-spacing:.04em}
   .about-grid{grid-template-columns:1fr;gap:50px}
   .origin-body{grid-template-columns:1fr;gap:30px}
   .lead-quote{position:static}
@@ -1891,6 +1897,7 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   .contact-cards{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr;text-align:left}
+  .footer-meta{justify-self:start}
   .footer-nav ul{max-width:420px}
 
   .values-grid{grid-template-columns:repeat(2, 1fr)}
@@ -1916,6 +1923,8 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 /* スマホではカード一覧を横スワイプにして、縦のスクロール量を減らす（2026-09-17）
    1枚を約85%幅にし、隣のカードを少し見せて横に続くことを示す。自動で流れる動きはデザイン改良フェーズで検討 */
 @media (max-width: 760px){
+  .nav-desktop{display:none}
+  .hamburger{display:block}
   .ach-grid,
   .mvv-grid{
     display:flex;
