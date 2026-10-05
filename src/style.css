@@ -1515,6 +1515,65 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   color:var(--c-deep);
   margin:clamp(40px, 5vw, 56px) 0 18px;
 }
+/* 開催概要などの項目一覧（見出し左・内容右） */
+.article-info{
+  margin-top:8px;
+  border-top:1px solid var(--c-deep);
+}
+.article-info > div{
+  display:grid;
+  grid-template-columns:13.5em 1fr;
+  gap:16px;
+  padding:16px 4px;
+  border-bottom:1px solid var(--c-line);
+}
+.article-info dt{
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.1em;
+  line-height:1.9;
+  color:var(--c-peach-dk);
+}
+.article-info dd{
+  font-size:15.5px;
+  line-height:1.9;
+  letter-spacing:.04em;
+  color:var(--c-ink);
+}
+.article-info + p{margin-top:1.4em}
+/* 番号付きの手順（01〜） */
+.article-steps{
+  list-style:none;
+  counter-reset:step;
+  margin-top:24px;
+  border-top:1px solid var(--c-line);
+}
+.article-steps li{
+  counter-increment:step;
+  display:grid;
+  grid-template-columns:3em 9em 1fr;
+  align-items:baseline;
+  gap:8px;
+  padding:14px 4px;
+  border-bottom:1px solid var(--c-line);
+  font-size:15px;
+  line-height:1.9;
+  letter-spacing:.04em;
+  color:var(--c-ink-soft);
+}
+.article-steps li::before{
+  content:counter(step, decimal-leading-zero);
+  font-family:var(--f-en);
+  font-size:20px;
+  font-weight:600;
+  color:var(--c-peach-dk);
+}
+.article-steps li span{
+  font-weight:700;
+  color:var(--c-deep);
+  letter-spacing:.06em;
+}
+.article-body .more-link-wrap{margin-top:clamp(32px, 4vw, 44px)}
 .article-photos{
   max-width:900px;
   margin:clamp(48px, 7vw, 72px) auto 0;
@@ -1853,6 +1912,10 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   .page-title .en{font-size:36px}
   .future-stats{padding-top:30px}
   .article-photos{grid-template-columns:1fr}
+  .article-info > div{grid-template-columns:1fr;gap:2px;padding:14px 2px}
+  .article-steps li{display:block;position:relative;padding:14px 2px 14px 2.8em}
+  .article-steps li::before{position:absolute;left:2px;top:12px}
+  .article-steps li span{display:block}
   .article-photos figure:first-child img{aspect-ratio:4/3}
 .news-item a{grid-template-columns:1fr auto;gap:6px 16px;padding:20px 6px}
   .news-date{grid-column:1 / -1}
