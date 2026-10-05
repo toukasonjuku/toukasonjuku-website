@@ -798,6 +798,23 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   font-size:15.5px;
   letter-spacing:.04em;
 }
+/* 成り立ちページ末尾の集合写真（縦長の元写真を横長に切り出す） */
+.origin-photo{
+  position:relative;z-index:1;
+  margin-top:clamp(40px, 6vw, 72px);
+}
+.origin-photo img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  object-position:50% 54%;
+  filter:saturate(.95);
+  border-left:3px solid var(--c-peach);
+}
+.origin-photo .image-caption{text-align:right}
+@media (max-width:760px){
+  .origin-photo img{aspect-ratio:4/3;object-position:50% 62%}
+}
 
 /* =========================================================
    MISSION / VISION

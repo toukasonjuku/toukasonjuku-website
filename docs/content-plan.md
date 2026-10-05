@@ -93,6 +93,7 @@
 - `philosophy/`: `meeting.jpg` `phil-tree.png` `phil-jinzai.png`
 - `activities/`: `activity-01〜03.jpg` `dojo-tech.jpg` `event-planning.jpg` `code.jpg`
 - `achievements/`: `ach-kyosei.jpg` `ach-tech.jpg` `ach-circle.jpg`
+- `origin/`: `members.jpg`（成り立ちページ末尾の集合写真。2026-10-05追加）
 - `future/`: `hero.jpg`（展望ページとトップの展望セクション背景）
 - `news/`: 記事の写真ができた時点で作る（空フォルダはgitで管理できないため未作成）
 - `images/tech.jpg`（3Dプリンターの写真）はどのページでも使っていないが、りんの判断（2026-10-05）で削除せず直下に残している
