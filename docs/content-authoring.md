@@ -18,10 +18,10 @@
 
 ```html
 <!--meta
-title: 桃下村塾（とうかそんじゅく）｜ ページ名
-description: 検索結果に出る説明文。120字前後を目安に。
+title: ページ名 ｜ 桃下村塾（とうかそんじゅく）
+description: 検索結果に出る説明文。100字前後を目安に。
 canonical: https://www.momoshita.jp/<page-path>/
-ogTitle: SNSシェア時のタイトル（省略時はtitleを流用）
+ogTitle: ページ名 ｜ 桃下村塾（省略時はtitleを流用）
 ogDescription: SNSシェア時の説明文（省略時はdescriptionを流用）
 -->
 ```
@@ -29,6 +29,8 @@ ogDescription: SNSシェア時の説明文（省略時はdescriptionを流用）
 - `title` / `description` / `canonical` は必須。`ogTitle` / `ogDescription` は省略可（省略時は自動でtitle/descriptionが使われる）
 - `description` はページごとに固有の内容にする（SEO上、全ページ同じ文言にしない）
 - `canonical` は末尾スラッシュ付きで統一する（例: `https://www.momoshita.jp/philosophy/`）
+- 書き方の統一ルール（2026-10-05、フェーズ3で決定）: `title` は「ページ名 ｜ 桃下村塾（とうかそんじゅく）」、`ogTitle` は「ページ名 ｜ 桃下村塾」（トップページだけは例外で、団体名を先頭に置く）。`description` / `ogDescription` は検索・SNSで読む人に向けた文なので、本文（である調）とは違い**です・ます調**で書く。冒頭に「桃下村塾（とうかそんじゅく）の〇〇。」とページの中身を示す
+- ページを追加・削除したら、ルート直下の `sitemap.xml` にもURLを追加・削除する
 
 ## 執筆時の必須ルール
 

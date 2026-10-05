@@ -2,8 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.momoshita.jp/</loc>
-    <lastmod>2026-05-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/philosophy/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/origin/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/mvv/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/activities/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/achievements/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/future/</loc>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/news/</loc>
+    <lastmod>2026-10-05</lastmod>
   </url>
 </urlset>
