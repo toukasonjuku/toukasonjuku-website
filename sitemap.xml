@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.momoshita.jp/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
   </url>
   <url>
     <loc>https://www.momoshita.jp/philosophy/</loc>
@@ -30,7 +30,11 @@
   </url>
   <url>
     <loc>https://www.momoshita.jp/news/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://www.momoshita.jp/news/october-meeting-2026/</loc>
+    <lastmod>2026-10-07</lastmod>
   </url>
   <url>
     <loc>https://www.momoshita.jp/news/oitoma-hackathon-2026/</loc>

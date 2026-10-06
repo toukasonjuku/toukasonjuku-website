@@ -1532,6 +1532,8 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
 .news-article{background:var(--c-bg)}
 .article-hero{max-width:900px;margin:0 auto;overflow:hidden}
 .article-hero img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+/* 天井が広く写った写真は、切り出し位置を下に寄せる */
+.article-hero.is-low img{object-position:50% 85%}
 .article-body{
   max-width:720px;
   margin:clamp(40px, 6vw, 64px) auto 0;
@@ -1617,6 +1619,38 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   letter-spacing:.06em;
 }
 .article-body .more-link-wrap{margin-top:clamp(32px, 4vw, 44px)}
+/* 箇条書き（予定の一覧など） */
+.article-list{
+  list-style:none;
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:0 24px;
+  border-top:1px solid var(--c-line);
+}
+.article-list li{
+  position:relative;
+  padding:13px 4px 13px 22px;
+  border-bottom:1px solid var(--c-line);
+  font-size:15.5px;
+  font-weight:600;
+  letter-spacing:.05em;
+  color:var(--c-deep);
+}
+.article-list li::before{
+  content:"";
+  position:absolute;left:4px;top:50%;
+  width:8px;height:8px;margin-top:-4px;
+  border-radius:50%;
+  background:var(--c-peach);
+}
+.article-list a{color:var(--c-peach-dk);border-bottom:1px solid var(--c-peach)}
+.article-list a:hover{color:var(--c-accent)}
+.article-list + p{margin-top:1.6em}
+/* 写真2枚を横に並べる（1枚目を全幅にしない） */
+.article-photos.is-pair figure:first-child{grid-column:auto}
+.article-photos.is-pair img,
+.article-photos.is-pair figure:first-child img{aspect-ratio:4/3}
 .article-photos{
   max-width:900px;
   margin:clamp(48px, 7vw, 72px) auto 0;
@@ -2058,6 +2092,7 @@ body:has(.page-hero) .hamburger:not(.open) span{background:var(--c-ink)}
   .page-title .en{font-size:36px}
   .future-stats{padding-top:30px}
   .article-photos{grid-template-columns:1fr}
+  .article-list{grid-template-columns:1fr}
   .article-info > div{grid-template-columns:1fr;gap:2px;padding:14px 2px}
   .article-steps li{display:block;position:relative;padding:14px 2px 14px 2.8em}
   .article-steps li::before{position:absolute;left:2px;top:12px}
